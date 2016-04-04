@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+  <head>
+        <meta charset="utf-8">
+    <!--Edit the title of the page-->
+    <title>Your page title goes here</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <!--
+    Load CartoDB's code so we can pull in our CartoDB maps.
+    -->
+    <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/3.15/themes/css/cartodb.css" />
+    <script src="http://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?sensor=false&v=3.8"></script>
+    
+        <!--[if lte IE 8]>
+      <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/themes/css/cartodb.ie.css" />
+    <![endif]-->
+    <!--Switch between the different themes changing the stylesheet below - light-theme.css |dark-theme.css -->
+    <link rel="stylesheet" href="light-theme.css">
+    <link rel="stylesheet" href="makeitresponsive.css">
+    
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+      }
+
+      #map {
+        height: 100%;
+        width: 100%;
+      }
+      
+       .ACO-button {
+        position: inline;
+        position: absolute;
+        top: 100px;
+        right: 20px;
+        cursor: pointer;
+        font-size: 14px;
+        font-family: 'Courier';
+        color: darkslategrey;
+	    height: 85px;
+	     width: 180px;    
+         background-color: #EDEDED;
+        
+      }
+       .borough-picker:hover {
+	   background: #E7EEFA;
+    }
+        
+/* Customize the infowindow CSS */
+     div.cartodb-popup.v2 div.cartodb-popup-content-wrapper {
+         background:#FB623A;
+         opacity: 1;
+        color: darkslategrey;
+        margin-bottom: 1px;
+        margin-top:1px;
+        padding-top:1px;
+        padding-bottom:0px;
+        padding-left:7px;
+        padding-right:0px;
+        border-radius:0px;
+        max-width: 250px;
+        
+      }
+      
+      div.jspScrollable {
+        width: 100px;
+        
+      }
+      
+      div.cartodb-popup.v2:before {
+        border-top-color: #FB623A;
+        border-radius:0px;
+      }
+      
+      div.cartodb-popup p {
+        color: darkslategrey;
+        font-family: sans-serif;
+      }
+ 
+      
+/* customize legend*/
+      div.cartodb-legend-stack {
+        padding-bottom: 0px;
+        padding-right:0px;
+        margin-bottom:0px;
+        margin-right: 0px;
+        border-radius: 0px;
+        border-bottom:0px;
+        max-width:300px;
+        max-height:148px;
+        background: #EDEDED;
+      }
+      
+        div.cartodb-legend-custom {
+        border-bottom:0px;
+        padding-bottom:0px;
+        margin-bottom:0px;
+        max-height:80%;
+      }
+        
+        div.cartodb-legend-stack div.cartodb-legend {
+        border-bottom:0px;  
+        margin-bottom:0px;
+        padding-bottom:0px;
+  
+      }
+      
+      div.cartodb-legend.custom ul li{
+        line-height:30px;
+      }
+      
+      div.cartodb-legend.custom ul li .bullet{
+        margin-left:0px;
+        margin-top:10px;
+        margin-bottom:0px;
+       /* background: #EDEDED;*/
+        
+      }
+      
+      div.legend-title{
+        margin-bottom:0px;
+        margin-right: 0px;
+        padding-bottom:0px;
+        padding-right: 0px;
+        border-bottom:0px;
+        
+        
+      }
+      div.cartodb-legend.bubble ul li.graph .bubbles body.ready{
+        
+      }
+      
+      div.cartodb-legend.bubble.ul{
+        padding:0px;
+        margin:0px;
+        margin-bottom:2px;
+        text-align: left;
+      }
+    
+        div.cartodb-legend.bubble{
+        padding:4px 3px 1px 3px;
+        border-top:0px;
+          text-align: left;
+      }
+        
+    </style>
+      
+<script type="infowindow/html" id="infowindow_template"><div class="cartodb-popup v2">
+        <a href="#close" class="cartodb-popup-close-button close">x</a>
+        <div class="cartodb-popup-content-wrapper">
+            <div class="cartodb-popup-content"><p>{{aco_num}}</p><p>{{aco_name}}</p><p>{{aco_serv_area}}</p><h4>Number of providers:</h4><p>{{count}}</p><h4>Participant_lbn</h4><p>{{par_lbn}}</p><p>{{aco_agreement_type}}</p><h4>Agreement Period Number</h4><p>{{agmt_prd_num}}</p><p>{{initial_start_date}}</p><h4>track_1</h4><p>{{track_1}}</p><h4>track_2</h4><p>{{track_2}}</p><h4>track_3</h4><p>{{track_3}}</p><p>{{zip_code}</p><p><a href=>{{aco_public_reporting_website}}{{"target=”_blank”New Tab"}}</a></p>
+    </div>
+  </div>
+  <div class="cartodb-popup-tip-container"></div>
+</div>
+</script>
+    
+<script>
+    var dataLayer;
+      //
+      // Initialize map from CartoDB
+      //
+      $(document).ready(function () {
+        cartodb.createVis('map', 'https://thenewschool.cartodb.com/u/churc186/api/v2/viz/3441dc88-f84f-11e5-b332-0e5db1731f59/viz.json')
+        .done(function (vis, layers) {
+            var dataLayer = layers[1].getSubLayer(0);
+          
+            // Tell CartoDB it's okay if there are embedded videos and other
+            // files in our infowindow template
+            dataLayer.infowindow.set('sanitizeTemplate', 'false');
+          
+            // Tell CartoDB to use our template from above
+            dataLayer.infowindow.set('template', $('#infowindow_template').html());
+          });
+          
+          
+// Adding button to select: Initialize the button: add an event handler to watch for clicks
+        //
+        $('.ACO-button').change(function () {
+          var count = $(this).val();
+          var sql;
+          if (count === 'all') {
+            // if count is 'all', reset SQL to the original
+            sql = "SELECT * FROM table_2016_mssp_acos_merge_participants_clean_count_2_merge";
+          }
+          else {
+            // else, select only features with the field set to the chosen number
+            sql = "SELECT * FROM     table_2016_mssp_acos_merge_participants_clean_count_2_merge WHERE count = '" + count + "'";
+          }
+          dataLayer.setSQL(sql);
+        });
+          
+      });
+</script>
+ </head>
+
+ <body>
+    <div class="map"  id="map"></div>
+   
+    <div class="ACO-button">
+    <span>Accountable Care Organizations vary in their <strong> number of providers:</strong> from 1 to 358:
+      <select name="count">
+        <option value="all">all ACOs</option>
+        <option value="1">1</option>
+        <option value=">2" +"<5">2-5</option>
+        <option value=">6""<15">6-15</option>
+       <option value=>16-50</option>
+        <option value=>51-100</option>
+        <option value=>101-200</option>
+        <option value=>201-358</option>
+    </select></span></div>
+    
+     <div class="sidepanel">
+      <div class="wrapper">
+        <div class="context subheader">
+          <p>Map created by <a href="#">{Link to your website}</a></p>
+        </div>
+        <h1>2016 Shared Savings Program Medicare Accountable Care Organization locations</h1>
+        <p>Data is from The Centers for Medicare and Medicaid Services, CMS, part of the Department of Health and Human Services. <a href=''>https://data.cms.gov/ACO/2016-Medicare-Shared-Savings-Program-Accountable-C/i683-k66m</a>CMS notes that "The Medicare Shared Savings Program (or Shared Savings Program) facilitates coordination among providers to improve the quality of care for Medicare fee-for-service beneficiaries while reducing the growth in health care costs. Eligible providers, hospitals, and suppliers may apply to participate in the Shared Savings Program by creating or participating in an Accountable Care Organization (ACO)."</p>
+
+        <!--Copy and paste the div below for creating content blocks-->
+        <h3>Description</h3>
+        <p>In February 2016, there were 433 Accountable Care Organizations (ACOs) across the country. Each ACO brings several providers together to work with each other as a care team. The map shows each ACO location with ACO number and track (1, 2, or 3), and the next step is to link the providers each ACO is made up of. </p>
+
+        <h3>Sources</h3>
+        <p>ACO providers <a href="#">link</a> are listed at  <a href="#">link</a>. The ACO vary in size from x number of providers to x providers. Per state, there are between .......</p>
+
+        <div class="context footer">
+          <p>Create your maps with ease using <a href="http://cartodb.com">CartoDB</a></p></p>
+        </div>
+    </div>
+  </body>
+</html>
