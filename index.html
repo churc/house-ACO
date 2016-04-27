@@ -12,7 +12,8 @@
 
 <!--//Load CartoDB's code so we can pull in our CartoDB maps//-->
     <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/3.15/themes/css/cartodb.css">
- 
+ <script src="http://libs.cartocdn.com/cartodb.js/v3/cartodb.js"></script>
+  
 <!--//if IE 8 link//-->
     <script src="http://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"></script> 
 
@@ -30,7 +31,6 @@
  <link rel="stylesheet" href="css/dblight-theme.css">
     <link rel="stylesheet" href="css/dbmakeitresponsive.css"> 
   
-<script src="http://libs.cartocdn.com/cartodb.js/v3/cartodb.js"></script>
   
   <style> 
         html, body {
@@ -38,126 +38,151 @@
         margin: 0;
         padding: 0;  
         width: 100%;
-        font-family: Courier;
+        font-family: 'Courier';
       } 
     
-    div.cartodb-searchbox {
-        position: relative; 
-        float:right;
-      display: block;
-      border-radius:0;
-      margin: 20px 220px 0 0;
-    }
     
-    div.cartodb-zoom {
-      border-radius:0;
-    
-    }
-    
- 
       #map { 
         height: 90%; 
         width: 95%; 
         margin-left:15px;
         padding-top:10px;
+        z-index: 8;
       } 
     
-     #map2 { 
+      #map2 { 
         height: 50%; 
         width: 48%; 
-       z-index:60;
+        margin-left:15px;
+        padding: 10 10 10 10px;
+        z-index:60;
       } 
     
-     #map3 { 
+      #map3 { 
         height: 50%; 
         width: 48%; 
-        margin-left:0px;
-       z-index:70;
+        margin-left:15px;
+        padding: 10 10 10 10px;
+        z-index:70;
       } 
         
-     #map4 { 
+      #map4 { 
         height: 50%; 
-        width: 48%; 
-       z-index:1;
+        width: 48%;
+        margin-left:15px;
+        padding: 10 10 10 10px;
+        z-index:50;
       } 
     
-     #map5 { 
+      #map5 { 
         height: 50%; 
         width: 48%; 
-        margin-left:0px;
-       z-index:1;
+        margin-left:15px;
+        padding: 10 10 10 10px;
+        z-index:40;
       } 
-    /* a [target="_blank”]{
-        color: blue;   
-        }*/
       
-       .ACO-button { 
-        position: inline; 
-        position: absolute; 
-        top: 470px; 
-        left: 20px; 
-        cursor: pointer; 
-        font-size: 12.5px; 
-        font-family: Courier; 
+        .track-checkbox-wrapper {
+        position: inherit;
+        font-size: 13px; 
+        font-family: 'Courier';
+        line-height: 1.15;
+        color: 'darkslategrey'; 
+        padding-top:20px;
+        padding-left:30px;
+        z-index:5;
+      
+      }
+    
+        .ACO-button { 
+         position:inherit;
+         left: 40px; 
+         cursor: pointer; 
+         font-size: 12.5px; 
+         font-family: 'Courier'; 
          line-height: 1.15;
-        color: darkslategrey; 
+         color: 'darkslategrey'; 
          height: 65px; 
          width: 165px;     
          background-color: #ffffff; 
-         padding-top:8px;
+         padding-top:10px;
          padding-right: 5px;
-         padding-left: 12px;
+         padding-left: 60px;
         } 
        
         .ACO-picker {
         font-size: 11.5px; 
-        font-family: Courier;
+        font-family: 'Courier';
         padding-top:2px;
         margin-top:1px
         }
     
-      .ACO-picker:hover { 
-       background: #E7EEFA;
+	  	.ACO-picker:hover { 
+        background: #E7EEFA;
         font-size: 11.5px; 
-        font-family: Courier;
+        font-family: 'Courier';
         } 
     
-      .poverty-button{
-       /* position: inline; */
-        position: absolute; 
-        top: 710px; 
-        left: 20px; 
-        cursor: pointer; 
-        font-size: 12.5px; 
-        font-family: Courier; 
-         line-height: 1.15;
-        color: darkslategrey; 
-         height: 65px; 
-         width: 160px;     
-         background-color: #EDEDED; 
-         padding-top:8px;
-         padding-right: 5px;
-         padding-left: 12px;
+	  	.poverty-button{
+         position: inherit;
+         cursor: pointer; 
+         font-size: 13px; 
+         font-family: 'Courier'; 
+         line-height: 1.25;
+         color: 'darkslategrey'; 
+         height: 70px; 
+         width: 240px;     
+         background-color: #ffffff;
+         padding-left:30px;
          z-index:1;
         } 
     
         .poverty-picker {
-        font-size: 11.5px; 
-        font-family: Courier;
+         font-size: 11.5px; 
+         font-family: 'Courier';
+         padding-top:2px;
+         margin-top:2px;
       }  
     
-        .poverty-picker: hover {
+        .poverty-picker:hover {
         font-size: 11.5px; 
-        font-family: Courier;
+        font-family: 'Courier';
       }  
     
-    .cartodb-popup-close-button {
+    
+    	 .disability-button {
+         position: inherit;
+         cursor: pointer; 
+         font-size: 13px; 
+         font-family: 'Courier'; 
+         line-height: 1.25;
+         color: 'darkslategrey'; 
+         height: 70px; 
+         width: 240px;     
+         background-color: #ffffff;
+         padding-left:30px;
+         z-index:1;
+        } 
+    
+        .disability-picker {
+         font-size: 11.5px; 
+         font-family: 'Courier';
+         padding-top:2px;
+         margin-top:2px;
+      }  
+    
+        .disability-picker:hover {
+        font-size: 11.5px; 
+        font-family: 'Courier';
+      }  
+    
+	  	.cartodb-popup-close-button {
         position: absolute;
         top: -12px;
         right: -11px;
         width: 26px;
         height: 26px;
-        /* background: url('http://libs.cartodb.com/cartodb.js/v3/themes/img/light.png') no-repeat 0 -23px; */
+        background: url('http://libs.cartodb.com/cartodb.js/v3/themes/img/light.png') no-repeat 0 -23px; 
         text-indent: -9999px;
         font-size: 0;
         line-height: 0;
@@ -165,10 +190,53 @@
         text-transform: uppercase;
         z-index: 3;
       }
+    
+/*--customize the search//--*/
+        div.cartodb-searchbox {
+        position: inherit; 
+        float:right;
+        display: block;
+        max-height:25px;
+        border-radius:0;
+        box-shadow:none;
+        margin-top: 20px;
+        margin-left:80px;
+      }
+    
+        div.cartodb-zoom {
+        border-radius:0;
+        float:left;
+        box-shadow:none;
+      }
+  
+ /*--note not working --*/
+      div.cartodb-fullscreen{
+        border-radius:0;
+        float:left;
+        box-shadow:none;
+      }
+ 
+ /*--layer selection box map*/
+        div.cartodb-layer-selector-box{
+        position:inherit;
+        float:left;
+        max-height:27px;
+        margin-top: 53px;
+        margin-left:80px;
+        border-radius:0;
+        box-shadow:none;
+      }
+    
+        div.cartodb-layer-selector-box a.layers{
+        font-family: 'Courier';
+        font-size:12px;
+        line-height: 17px;
+    }
+    
 /*--//customize the infowindow CSS//--*/ 
-     div.cartodb-popup.v2 div.cartodb-popup-content-wrapper {  
+        div.cartodb-popup.v2 div.cartodb-popup-content-wrapper {  
         opacity: 1; 
-        color: darkslategrey; 
+        color: 'darkslategrey'; 
         margin-bottom: 1px; 
         margin-top:1px; 
         padding-top:1px; 
@@ -179,58 +247,79 @@
         max-width: 250px; 
       } 
   
-      div.cartodb-popup p { 
-        color: darkslategrey; 
+        div.cartodb-popup p { 
+        color: 'darkslategrey'; 
         font-family: sans-serif; 
       } 
   
-    
+ /*--map headers--*/
+      div..cartodb-header .content {
+      padding: 5px;
+    }
+        div.cartodb-header .content .title{
+        fill-opacity:70%;
+        height: 11px;
+          font-family: 'Courier';
+          font-size: 14px;
+          text-align:middle;
+          
+    }
 /*--//customize legend//--*/ 
-      div.cartodb-legend-stack { 
+	  	div.cartodb-legend {
+      	padding-top: 10px;
+      	padding-left: 13px;
+      	padding-bottom: 5px;
+        
+      }
+        div.cartodb-legend-stack { 
+        position:inherit;
+        float: left;
         padding-bottom: 0px; 
         padding-right:0px; 
         margin-bottom:0px; 
         margin-right: 0px; 
         border-radius: 0px; 
-        border-bottom:0px; 
-        max-width:316px; 
-        max-height:343px; 
+        box-shadow: none;
+        max-width:318px; 
+        max-height:185px; 
         background: #ffffff; 
-        position: inline; 
-        position: absolute; 
-        top: 560px; 
-        left: 30px;
+        left: 10px;
+        bottom:15px;
       } 
+
+/*--removes line between legend items*/
+      	div.cartodb-legend-stack div.cartodb-legend {
+      	border-bottom: 0px;
+      }
     
-        div.cartodb-legend-custom { 
+        div.cartodb-legend-custom {
+        line-height:0px; 
         border-bottom:0px; 
         padding-bottom:0px; 
         margin-bottom:0px; 
-        max-height:343px; 
       } 
        
-      div.cartodb-legend-stack div.cartodb-legend {
-          z-index:2;
+        div.cartodb-legend-stack div.cartodb-legend {
+        z-index:2;
       } 
     
         div.cartodb-legend.custom ul li { 
-        line-height:30px; 
+        vertical-align:top;
       } 
    
-      div.cartodb-legend.custom ul li .bullet { 
+        div.cartodb-legend.custom ul li .bullet { 
         margin-left:0px; 
-        margin-top:10px; 
-        margin-bottom:0px; 
+        margin-bottom:0px;    
       } 
        
-      div.legend-title{ 
+        div.legend-title{ 
         margin-bottom:0px; 
         margin-right: 0px; 
         padding-bottom:0px; 
         padding-right: 0px; 
         border-bottom:0px; 
       } 
-      div.cartodb-legend.bubble.ul{ 
+        div.cartodb-legend.bubble.ul{ 
         padding:0px; 
         margin:0px; 
         margin-bottom:2px; 
@@ -241,73 +330,65 @@
         border-top:0px; 
         text-align: left; 
       } 
-   
-     /* div.cartodb-legend choropleth{ */
-        /* z-index:1; */
-    /* } */
     
-    div.leaflet-control-attribution.leaflet-control{
-  display: none;
-}
+/*--chloropeth legends--*/
     
+    	div.cartodb-legend ul li{
+      	text-transform:lowercase;
+    	}
+    
+    div.cartodb-legend.choropleth li.graph{
+    /*--  height:20%;--*/
+    }
+
+    
+/*--small maps legends--*/
+      div.cartodb-legend .legend-title{
+      text-transform:lowercase;
+      margin-top: 0px;
+      margin-bottom: 3px;
+      text-align: center;
+    }--*/
+
+    
+    	div.leaflet-control-attribution.leaflet-control{
+  		display: none;
+	  }
     
    </style> 
   
-   <script src="https://maps.googleapis.com/maps/api/js?sensor=false&v=3.8"></script>
+<script src="https://maps.googleapis.com/maps/api/js?sensor=false&v=3.8"></script>
   
  
-<script type="infowindow/html" id="infowindow_template">
-<div class="cartodb-popup v2">
-<a href="#close" class="cartodb-popup-close-button close">x</a>
-  <div class="cartodb-popup-content-wrapper" style= "background: #FB623A">
-    <div class="cartodb-popup-content">
-       <h4></h4>
-      <p>{{aco_num}}</p>
-      <h4></h4>
-      <p><strong>{{aco_name}}</strong></p>
-      <h4></h4>
-      <p>{{aco_serv_area}}</p>
-      <h4>ACO Type</h4>
-      <p>{{aco_agnt_type}}</p>
-      <h4>Agreement Period Number</h4>
-      <p>{{agmt_prd_num}}</p>
-      <h4>Track 1</h4>
-      <p>{{track_1}}</p>
-      <h4>Track 2</h4>
-      <p>{{track_2}}</p>
-      <h4>Track 3</h4>
-      <p>{{track_3}}</p>
-      <h4>Start date</h4>
-      <p>{{intl_strt_date}}</p>
-    <h4></h4>
-     <p><a href={{aco_public_reporting_website}}>ACO website</a></p>
-      </div>
- </div>
- </div>    
-  <div class="cartodb-popup-tip-container">
-</div>
-</script> 
+<script type="infowindow/html" id="infowindow_template"></script> 
 
 </head>  
    
-<body> 
+ <body> 
     <div id="map"></div> 
     <div class="sidepanel">
-      <div class="wrapper">
-        <div class="context subheader">
+    <div class="wrapper">
+       <div class="context subheader">
           
           <p>Maps under development <a href="#"></a></p>
         </div>
         <h3>2016 Shared Savings Program Medicare Accountable Care Organization locations</h3>
         <p>Data is from The Centers for Medicare and Medicaid Services, CMS, part of the Department of Health and Human Services. <a href=''>https://data.cms.gov/ACO/2016-Medicare-Shared-Savings-Program-Accountable-C/i683-k66m</a> CMS notes that "The Medicare Shared Savings Program (or Shared Savings Program) facilitates coordination among providers to improve the quality of care for Medicare fee-for-service beneficiaries while reducing the growth in health care costs. Eligible providers, hospitals, and suppliers may apply to participate in the Shared Savings Program by creating or participating in an Accountable Care Organization (ACO)."</p>
-<!--Copy and paste the div below for creating content blocks-->
+      Copy and paste the div below for creating content blocks
         <h3>Description</h3>
         <p>In February 2016, there were 433 Medicare Accountable Care Organizations (ACOs) across the country. Each Medicare ACO brings several providers together to work with each other as a care team. The map shows each Medicare ACO location with ACO number and track (1, 2, or 3), and the next step is to link the providers each ACO is made up of. 
        </p>
         <h3>Sources</h3>
          <p>Medicare ACO providers <a href="#">link</a> are listed at  <a href="#">link</a>. The Medicare ACO vary in size from 1 number of providers to 328 providers. </p>
-      </div>
+      </div> 
     </div>
+      
+
+    <div class="track-checkbox-wrapper">
+      <input type="checkbox" class="track-1-checkbox">Track 1
+      <input type="checkbox" class="track-2-checkbox">Track 2
+      <input type="checkbox" class="track-3-checkbox">Track 3
+     </div>
       
      <div class="ACO-button">
       <div>Medicare ACOs vary by number of participants from 1 to 328:</div> 
@@ -325,24 +406,32 @@
   <div class="leaflet-control-attribution leaflet-control" style="display:none"></div>
  
   
-<!--//////this is NEW////-->   
-
+<!--//doublemap template first set of double maps//-->  
+   
     <div class="row">
       <div class="col span2 empty"><p></p></div>
     <div class="col span2 empty"><p></p></div>
       <div class="col span2 empty"><p></p></div>
       <div class="col span16 context subheader">
-<!--add text-->
+<!--//add text-->
         <p>The Medicare ACOs are mapped from CMS's ACO database which lists 433 ACOs, February 2016. <a href="#">{Link to CMS website}</a></p>
       </div>
       <div class="col span2 empty"><p></p></div>
-    </div>
+  </div>
+ 
+ <div class="col span8 map" id="map2" style="margin-bottom:15px"></div>	
+      <div class="col span8 map" id="map3" style="margin-bottom:15px;"></div>
+ 
   
- <div class="col span8 map" id="map2"></div>	
-      <div class="col span8 map" id="map3"></div>
-  <div class="cartodb-legend choropleth" style="z-index:1;"> </div>
-   <div class="poverty-button">
-      <div>County poverty rates vary from 1% to 52.6%:</div> 
+   <!--   <div class="doublemap">
+  		 
+  
+  <div class="cartodb-header" style="position:relative; bottom:10px;"></div>-->
+     
+   <!--<div class="cartodb-legend choropleth" style="z-index:1; position:inherit;">--> 
+      
+     <div class="poverty-button" style="z-index:1;">
+      <div style="font-family:Courier; color: darkslategrey;">County poverty rates vary from 1% to 52.6%:</div> 
      <select class="poverty-picker"> 
         <option value='all'>All</option> 
         <option value='1-8.5'>1-8.5%</option>       
@@ -352,28 +441,48 @@
         <option value='22.8-27.6'>22.8-27.6%</option> 
         <option value='27.6-35.5'>27.6-35.5%</option> 
         <option value='35.5-52.6'>35.5-52.6%</option> 
-    </select></div> 
-  
-
+    </select></div>
    
-<!--<div class="double">-->
+  
+     
        
-<!--/////second set of maps/////-->
+<!--//second set of maps/////-->
   <div class="row">
       <div class="col span2 empty"><p></p></div>
     <div class="col span2 empty"><p></p></div>
       <div class="col span2 empty"><p></p></div>
       <div class="col span16 context subheader">
-        <!--add text-->
+  <!--//  add text/////-->
         <p>Vulnerability data at county level <a href="#">{Link to }</a></p>
       </div>
       <div class="col span2 empty"><p></p></div>
     </div>
   
- <div class="col span8 map" id="map4"></div>
-      <div class="col span8 map" id="map5"></div>
+ <div class="col span8 map" id="map4" style="margin-bottom:15px"></div>
+      <div class="col span8 map" id="map5" style="margin-bottom:15px"></div>
+   
+   	 <!--   <div class="doublemap"> 
+        
+        <div class="cartodb-header" style="position:relative; bottom:10px;"></div>-->
   
-  
+     
+    <!--<div class="cartodb-legend choropleth" style="z-index:1; position:inherit;">--> 
+      <div class="disability-button" style="z-index:1;">
+      <div style="font-family:Courier; color: darkslategrey;">County disability rates vary from 1% to 34%:</div> 
+     <select class="disability-picker"> 
+        <option value='all'>All</option> 
+        <option value='1-8.9'>1-8.9%</option>       
+        <option value='8.9-12.4'>8.9-12.4%</option>
+        <option value='12.4-15.8'>12.4-15.8%</option> 
+        <option value='15.8-19.3'>15.8-19.3%</option> 
+        <option value='19.3-23.1'>19.3-23.1%</option> 
+        <option value='23.1-27.9'>23.1-27.9%</option> 
+        <option value='27.9-34'>27.9-34%</option>
+    </select></div> 
+        
+		
+      
+	 
 <!--In the paragraph below give an introduction to your visualization-->
     <div class="row">
       <div class="col span2 empty"><p></p></div>
@@ -382,14 +491,12 @@
       <div class="col span2 empty"><p></p></div>
       
       <div class="col span16">
-        <h1 style="text-align: center;">County level poverty rates, high school graduate rates and disability rates in the United States</h1>
+        <h2 style="text-align: center; padding-top: 28px;">County level poverty rates, high school graduate rates and disability rates in the United States</h2>
         <p>These maps detail in darker color areas of vulnerability where the poverty rate is higher and where the disability rate is higher.</p>
       </div>
       <div class="col span2 empty"><p></p></div>
    </div>
     
-<!--<div class="col span8 map" id="map4"></div>
-<div class="col span8 map" id="map5"></div>-->
 
 <!--Copy and paste the "row" div below a second, third, or fourth time to create content blocks-->
     <div class="row">

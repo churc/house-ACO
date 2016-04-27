@@ -1,55 +1,111 @@
 //--Initialize map from CartoDB 
-  var dataLayer; 
-      $(document).ready(function () { 
+var dataLayer;
+var dataLayer2;
+var dataLayer3;
+
+      $(document).ready(function() {
         cartodb.createVis('map', 'https://thenewschool.cartodb.com/u/churc186/api/v2/viz/3441dc88-f84f-11e5-b332-0e5db1731f59/viz.json', {
-             fullscreen: true, maxZoom: 18, zoom: 4, center_lat: 39.8282, center_lon: -98.5795})
-          .done(function (vis, layers) { 
-    //--///////layers[1] has ALL your data layers from /CartoDB and you access different //ones by changing /the number you give to getSubLayer(). you want /something like: //dataLayer=layers[1].getSubLayer(0); /dataLayer=layers[1].getSubLayer(1);  
+           fullscreen: true, maxZoom: 18, zoom: 4, center_lat: 39.8282, center_lon: -98.5795})
+          .done(function(vis, layers){
+//--///////layers[1] has ALL your data layers from /CartoDB and you access different//ones by changing/the number you give to getSubLayer(). you want /something like: //dataLayer=layers[1].getSubLayer(0); /dataLayer=layers[1].getSubLayer(1);  
          
-        dataLayer = layers[1].getSubLayer(0); 
-        dataLayer1 = layers[1].getSubLayer(1); 
-         
+     dataLayer = layers[1].getSubLayer(0);
+    // dataLayer1 = layers[1].getSubLayer(1);
+	 dataLayer2 = layers[1].getSubLayer(2);
+  	 dataLayer3 = layers[1].getSubLayer(3);   
+     
           
-//--//// Tell CartoDB it's okay if there are embedded //videos and other files in our infowindow template - //note this goes in the done ()function directly after //the datalayers - as here
+//--Tell CartoDB it's okay if there are embedded //videos and other files in our infowindow template//note this goes in the done ()function directly after //the datalayers - as here
             dataLayer.infowindow.set('sanitizeTemplate', 'false');       
-        // Tell CartoDB to use our template from above 
-            dataLayer.infowindow.set('template',  $('#infowindow_template').html());     
-          
-           }); 
+//--Tell CartoDB to use our template from above 
+            dataLayer.infowindow.set('template',  $('#infowindow_template').html());
+     });
 
 //--///Adding button to select: Initialize the button: add an event //handler to watch for clicks 
-        $('.ACO-picker').change(function (){
+        $('.ACO-picker').change(function(){
 		var sql;
-        	if ($(this).val() === 'all'){
+        	if ($(this).val()==='all'){
      sql = "SELECT * FROM table_2016_mssp_acos_merge_participants_clean_count_2_merge";
-  	}
-           else if ($(this).val() === '1') {
+  }
+           else if ($(this).val()==='1') {
      sql = "SELECT * FROM table_2016_mssp_acos_merge_participants_clean_count_2_merge WHERE count =1";
   }
-         else if ($(this).val() === '2-5') {
+         else if ($(this).val()==='2-5') {
      sql = "SELECT * FROM table_2016_mssp_acos_merge_participants_clean_count_2_merge WHERE count >=2 AND count <5";
   }
-  		else if ($(this).val() === '6-15') {
+  		else if ($(this).val()==='6-15') {
      sql = "SELECT * FROM table_2016_mssp_acos_merge_participants_clean_count_2_merge WHERE count >=6 AND count <15";
   }
-         else if ($(this).val() === '16-50') {
+         else if ($(this).val()==='16-50') {
      sql = "SELECT * FROM table_2016_mssp_acos_merge_participants_clean_count_2_merge WHERE count >=16 AND count <50";
   }
-  		else if ($(this).val() === '51-100') {
+  		else if ($(this).val()==='51-100') {
      sql = "SELECT * FROM table_2016_mssp_acos_merge_participants_clean_count_2_merge WHERE count >=51 AND count <100";
   }
-   		else if ($(this).val() === '101-200') {
+   		else if ($(this).val()==='101-200') {
      sql = "SELECT * FROM table_2016_mssp_acos_merge_participants_clean_count_2_merge WHERE count >=101 AND count <200";
   }
-  		else if ($(this).val() === '201-329') {
+  		else if ($(this).val()==='201-329') {
      sql = "SELECT * FROM table_2016_mssp_acos_merge_participants_clean_count_2_merge WHERE count >=201 AND count <=328";
   } 
-          dataLayer.setSQL(sql);
+          dataLayer3.setSQL(sql);
 //--////need to add -dataLayer1.setSQL(sql);-- if you want function to work on sublayer1
-        });  
+  }); 
+		 
+        
+//
+// CHECKboxes - track 1, 2 or 3 - Update the SQL by looking at all the checkboxes and creating the SQL with all of them.
+               
+//
+// Update the SQL by looking at all the checkboxes and creating the SQL with all of them.
+//
+         function updateSql() {
+ // Start with assuming we'll select everything
          
-      }); 
-  
+          var sql2 = "SELECT * FROM table_2016_medicare_shared_savings_program_participants_3_28_16";
+          
+// This will be the list of conditions, if anything's selected
+          var whereConditions = [];
+          
+ // If track 1 is checked add a where condition
+          if ($('.track-1-checkbox').is(':checked')) {
+            whereConditions.push("track_1 = '1'");
+          }
+          
+ // If track 2 is checked add another where condition
+          if ($('.track-2-checkbox').is(':checked')) {
+            whereConditions.push("track_2 = '1'");
+          }
+ // If track 3 is checked add another where condition
+          if ($('.track-3-checkbox').is(':checked')) {
+          whereConditions.push("track_3 = '1'");
+         }
+          
+// If anything was checked, add "WHERE" and combine all of the conditions with "OR"
+          if (whereConditions.length > 0) {
+            sql2 += ' WHERE ' + whereConditions.join(' OR ');
+          }
+          
+// Log out the SQL to ensure we have something that will work
+          console.log(sql2);
+          dataLayer2.setSQL(sql2);
+        }
+
+//
+// Initialize the checkboxes: add an event handler to watch for change
+//
+        $('.track-1-checkbox').change(function () {
+          updateSql();
+        });
+        $('.track-2-checkbox').change(function () {
+          updateSql();
+        }); 
+        $('.track-3-checkbox').change(function () {
+          updateSql();
+       });   
+ }); 
+      
+
 
  //--////this is new/////--//
  //Change the URL's below in order to change the maps that are being shown.
@@ -77,25 +133,27 @@
       });
               
     $(document).ready(function () { 
-        cartodb.createVis('map3', 'https://thenewschool.cartodb.com/u/churc186/api/v2/viz/efcb067a-0329-11e6-9880-0e3ff518bd15/viz.json',
+        cartodb.createVis('map3', 'https://thenewschool.cartodb.com/u/churc186/api/v2/viz/9f6a6a1a-0327-11e6-94ff-0e787de82d45/viz.json',
                          {maxZoom:18, zoom:4, center_lat: 39.8282, center_lon: -98.5795 })
         .done(function(vis, layers) {
         map3 = vis.mapView.map;
+          
+           eddataLayer = layers[1].getSubLayer(0); 
+       // eddataLayer1 = layers[1].getSubLayer(1); 
+          
+            //--//// Tell CartoDB it's okay if there are embedded //videos and other files in our infowindow template - //note this goes in the done ()function directly after //the datalayers - as here
+            dataLayer.infowindow.set('sanitizeTemplate', 'false');       
+        // Tell CartoDB to use our template from above 
+            dataLayer.infowindow.set('template',  $('#infowindow_template').html());     
+          
+        
            map2.on('change:zoom change:center', function(e) {
              changeMapState(map2, map3);
            });
            map3.on('change:zoom change:center', function(e) {
             changeMapState(map3, map2);
-          
-         povdataLayer = layers[1].getSubLayer(0); 
-        povdataLayer1 = layers[1].getSubLayer(1); 
-             
-             //--//// Tell CartoDB it's okay if there are embedded //videos and other files in our infowindow template - //note this goes in the done ()function directly after //the datalayers - as here
-            dataLayer.infowindow.set('sanitizeTemplate', 'false');       
-        // Tell CartoDB to use our template from above 
-            dataLayer.infowindow.set('template',  $('#infowindow_template').html());     
-          
-           });     
+          });
+         
         });
       });
     
@@ -149,7 +207,7 @@
       var disdataLayer;
         
     $(document).ready(function () { 
-      cartodb.createVis('map4', 'https://thenewschool.cartodb.com/u/churc186/api/v2/viz/9f6a6a1a-0327-11e6-94ff-0e787de82d45/viz.json',
+      cartodb.createVis('map4', 'https://thenewschool.cartodb.com/u/churc186/api/v2/viz/efcb067a-0329-11e6-9880-0e3ff518bd15/viz.json',
                        {maxZoom:18, zoom:4, center_lat: 39.8282, center_lon: -98.5795 })
       .done(function(vis, layers) {
         map4 = vis.mapView.map;
@@ -174,12 +232,43 @@
         });
       });
     
-    disdataLayer.setSQL(sql);
+      
+      //-----Adding button to select: Initialize the button: add an event //handler to watch for clicks      
+    $('.disability-picker').change(function() { 
+      var percwadisab_esttotcivnoninstpop_hc03_est_vc01 = $(this).val();
+          var sqldis;
+          if (percwadisab_esttotcivnoninstpop_hc03_est_vc01 === 'all') {
+     sqldis = "SELECT * FROM acs_14_5yr_s1810_disability_clean_merge";
+  }
+        else if(percwadisab_esttotcivnoninstpop_hc03_est_vc01==='1-8.9') {
+    sqldis = "SELECT * FROM acs_14_5yr_s1810_disability_clean_merge WHERE percwadisab_esttotcivnoninstpop_hc03_est_vc01 =>1 AND percwadisab_esttotcivnoninstpop_hc03_est_vc01 <8.9";
+  }
+         else if(percwadisab_esttotcivnoninstpop_hc03_est_vc01==='8.9-12.4') {
+    sqldis = "SELECT * FROM acs_14_5yr_s1810_disability_clean_merge WHERE percwadisab_esttotcivnoninstpop_hc03_est_vc01 >=8.9 AND percwadisab_esttotcivnoninstpop_hc03_est_vc01 <12.4";
+  }
+  else if(percwadisab_esttotcivnoninstpop_hc03_est_vc01==='12.4-15.8') {
+    sqldis = "SELECT * FROM acs_14_5yr_s1810_disability_clean_merge WHERE percwadisab_esttotcivnoninstpop_hc03_est_vc01 >=12.4 AND percwadisab_esttotcivnoninstpop_hc03_est_vc01 <15.8";
+  }
+         else if(percwadisab_esttotcivnoninstpop_hc03_est_vc01==='15.8-19.3') {
+    sqldis = "SELECT * FROM acs_14_5yr_s1810_disability_clean_merge WHERE percwadisab_esttotcivnoninstpop_hc03_est_vc01 >=15.8 AND percwadisab_esttotcivnoninstpop_hc03_est_vc01 <19.3";
+  }
+  else if(percwadisab_esttotcivnoninstpop_hc03_est_vc01==='19.3-23.1') {
+    sqldis = "SELECT * FROM acs_14_5yr_s1810_disability_clean_merge WHERE percwadisab_esttotcivnoninstpop_hc03_est_vc01 >=19.3 AND percwadisab_esttotcivnoninstpop_hc03_est_vc01 <23.1";
+  }
+   else if(percwadisab_esttotcivnoninstpop_hc03_est_vc01==='23.1-27.9') {
+    sqldis = "SELECT * FROM acs_14_5yr_s1810_disability_clean_merge WHERE percwadisab_esttotcivnoninstpop_hc03_est_vc01 >=23.1 AND percwadisab_esttotcivnoninstpop_hc03_est_vc01 <27.9";
+  }
+  else if(percwadisab_esttotcivnoninstpop_hc03_est_vc01==='27.9-34') {
+    sqldis = "SELECT * FROM acs_14_5yr_s1810_disability_clean_merge WHERE percwadisab_esttotcivnoninstpop_hc03_est_vc01 >=27.9 AND percwadisab_esttotcivnoninstpop_hc03_est_vc01 <=34";
+  } 
+          
+        disdataLayer.setSQL(sqldis);
         });
+       });
     
     function changeMapState(src,tgt){
         tgt.set({
            'center': src.get('center'),
            'zoom': src.get('zoom')
         });
-      }
+    }
