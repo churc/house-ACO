@@ -81,6 +81,22 @@
         padding: 10 10 10 10px;
         z-index:40;
       } 
+    
+       #map6 { 
+        height: 50%; 
+        width: 48%;
+        margin-left:15px;
+        padding: 10 10 10 10px;
+        z-index:50;
+      } 
+    
+      #map7 { 
+        height: 50%; 
+        width: 48%; 
+        margin-left:15px;
+        padding: 10 10 10 10px;
+        z-index:40;
+      } 
       
         .track-checkbox-wrapper {
         position: inherit;
@@ -266,7 +282,8 @@
     }
 /*--//customize legend//--*/ 
 	  	div.cartodb-legend {
-      	padding-top: 10px;
+      	padding-top: 8px;
+        padding-bottom:1px;
       	padding-left: 13px;
       	padding-bottom: 5px;
         
@@ -277,26 +294,44 @@
         padding-bottom: 0px; 
         padding-right:0px; 
         margin-bottom:0px; 
-        margin-right: 0px; 
+        margin-right: 0px;
         border-radius: 0px; 
         box-shadow: none;
         max-width:318px; 
         max-height:185px; 
         background: #ffffff; 
         left: 10px;
-        bottom:15px;
+        bottom:5px;
       } 
-
-/*--removes line between legend items*/
+    
+     /*--   div.cartodb-legend.wrapper{
+      border-top:5px;
+          border-bottom:5px;
+    }*/
+/*--removes line between legend items and makes legend smaller*/
       	div.cartodb-legend-stack div.cartodb-legend {
-      	border-bottom: 0px;
+      	border-bottom: 0px;  
+        padding-bottom:0px; 
+        margin-bottom:4px; 
+        padding-top: 0px; 
+        border-top:0px;
+        margin-top:4px; 
       }
     
         div.cartodb-legend-custom {
         line-height:0px; 
-        border-bottom:0px; 
+        
         padding-bottom:0px; 
         margin-bottom:0px; 
+        
+          
+          /*--padding-top: 1px; 
+        border-top:0px;
+        margin-top:0px; 
+        margin-right: 0px; 
+          
+          
+           border-bottom:1px;*/
       } 
        
         div.cartodb-legend-stack div.cartodb-legend {
@@ -307,6 +342,7 @@
         vertical-align:top;
       } 
    
+     /*--bullets--*/
         div.cartodb-legend.custom ul li .bullet { 
         margin-left:0px; 
         margin-bottom:0px;    
@@ -319,6 +355,8 @@
         padding-right: 0px; 
         border-bottom:0px; 
       } 
+    
+    /*--bubbles--*/
         div.cartodb-legend.bubble.ul{ 
         padding:0px; 
         margin:0px; 
@@ -331,25 +369,21 @@
         text-align: left; 
       } 
     
-/*--chloropeth legends--*/
-    
-    	div.cartodb-legend ul li{
-      	text-transform:lowercase;
-    	}
-    
-    div.cartodb-legend.choropleth li.graph{
-    /*--  height:20%;--*/
-    }
-
     
 /*--small maps legends--*/
       div.cartodb-legend .legend-title{
       text-transform:lowercase;
-      margin-top: 0px;
+       margin-top: 0px;
       margin-bottom: 3px;
       text-align: center;
     }--*/
 
+    /*--chloropeth legends--*/
+    
+    	div.cartodb-legend ul li{
+      	text-transform:lowercase;
+    	}
+        
     
     	div.leaflet-control-attribution.leaflet-control{
   		display: none;
@@ -481,7 +515,20 @@
     </select></div> 
         
 		
-      
+ <!--//third set of maps/////-->
+  <div class="row">
+      <div class="col span2 empty"><p></p></div>
+    <div class="col span2 empty"><p></p></div>
+      <div class="col span2 empty"><p></p></div>
+      <div class="col span16 context subheader">
+  <!--//  add text/////-->
+        <p>Vulnerability data at county level <a href="#">{Link to }</a></p>
+      </div>
+      <div class="col span2 empty"><p></p></div>
+    </div>
+  
+ <div class="col span8 map" id="map6" style="margin-bottom:15px"></div>
+      <div class="col span8 map" id="map7" style="margin-bottom:15px"></div>     
 	 
 <!--In the paragraph below give an introduction to your visualization-->
     <div class="row">

@@ -5,7 +5,7 @@ var dataLayer3;
 
       $(document).ready(function() {
         cartodb.createVis('map', 'https://thenewschool.cartodb.com/u/churc186/api/v2/viz/3441dc88-f84f-11e5-b332-0e5db1731f59/viz.json', {
-           fullscreen: true, maxZoom: 18, zoom: 4, center_lat: 39.8282, center_lon: -98.5795})
+            cartodb_logo: false, fullscreen: true, maxZoom: 18, zoom: 4, center_lat: 39.8282, center_lon: -98.5795})
           .done(function(vis, layers){
 //--///////layers[1] has ALL your data layers from /CartoDB and you access different//ones by changing/the number you give to getSubLayer(). you want /something like: //dataLayer=layers[1].getSubLayer(0); /dataLayer=layers[1].getSubLayer(1);  
          
@@ -119,7 +119,7 @@ var dataLayer3;
         
     $(document).ready(function () { 
       cartodb.createVis('map2', 'https://thenewschool.cartodb.com/u/churc186/api/v2/viz/75dc5b88-031b-11e6-ab91-0ea31932ec1d/viz.json',
-                       {maxZoom:18, zoom:4, center_lat: 39.8282, center_lon: -98.5795 })
+                       {cartodb_logo: false, maxZoom:18, zoom:4, center_lat: 39.8282, center_lon: -98.5795 })
       .done(function(vis, layers) {
         map2 = vis.mapView.map;
         povdataLayer = layers[1].getSubLayer(0); 
@@ -134,7 +134,7 @@ var dataLayer3;
               
     $(document).ready(function () { 
         cartodb.createVis('map3', 'https://thenewschool.cartodb.com/u/churc186/api/v2/viz/9f6a6a1a-0327-11e6-94ff-0e787de82d45/viz.json',
-                         {maxZoom:18, zoom:4, center_lat: 39.8282, center_lon: -98.5795 })
+                         {cartodb_logo: false, maxZoom:18, zoom:4, center_lat: 39.8282, center_lon: -98.5795 })
         .done(function(vis, layers) {
         map3 = vis.mapView.map;
           
@@ -208,7 +208,7 @@ var dataLayer3;
         
     $(document).ready(function () { 
       cartodb.createVis('map4', 'https://thenewschool.cartodb.com/u/churc186/api/v2/viz/efcb067a-0329-11e6-9880-0e3ff518bd15/viz.json',
-                       {maxZoom:18, zoom:4, center_lat: 39.8282, center_lon: -98.5795 })
+                       {cartodb_logo: false, maxZoom:18, zoom:4, center_lat: 39.8282, center_lon: -98.5795 })
       .done(function(vis, layers) {
         map4 = vis.mapView.map;
         disdataLayer = layers[1].getSubLayer(0); 
@@ -216,8 +216,8 @@ var dataLayer3;
       });
               
     $(document).ready(function () { 
-        cartodb.createVis('map5', 'https://thenewschool.cartodb.com/u/churc186/api/v2/viz/efcb067a-0329-11e6-9880-0e3ff518bd15/viz.json',
-                         {maxZoom:18, zoom:4, center_lat: 39.8282, center_lon: -98.5795 })
+        cartodb.createVis('map5', 'https://thenewschool.cartodb.com/u/churc186/api/v2/viz/bdf8c93c-0f1a-11e6-81c0-0ecd1babdde5/viz.json',
+                         {cartodb_logo: false, maxZoom:18, zoom:4, center_lat: 39.8282, center_lon: -98.5795 })
         .done(function(vis, layers) {
         map5 = vis.mapView.map;
            map4.on('change:zoom change:center', function(e) {
@@ -264,6 +264,48 @@ var dataLayer3;
           
         disdataLayer.setSQL(sqldis);
         });
+       });
+    
+    function changeMapState(src,tgt){
+        tgt.set({
+           'center': src.get('center'),
+           'zoom': src.get('zoom')
+        });
+    }
+
+
+//ADD maps 6 and 7 again side by side centered 
+       
+ 
+      var map6,map7;
+      var racdataLayer;
+        
+    $(document).ready(function () { 
+      cartodb.createVis('map6', 'https://thenewschool.cartodb.com/u/churc186/api/v2/viz/f8cdeae6-0f57-11e6-b6c3-0e5db1731f59/viz.json',
+                       {cartodb_logo: false, maxZoom:18, zoom:4, center_lat: 39.8282, center_lon: -98.5795 })
+      .done(function(vis, layers) {
+        map6 = vis.mapView.map;
+        racdataLayer = layers[1].getSubLayer(0); 
+       //racdataLayer1 = layers[1].getSubLayer(1); 
+      });
+              
+    $(document).ready(function () { 
+        cartodb.createVis('map7', 'https://thenewschool.cartodb.com/u/churc186/api/v2/viz/365faa88-0fa9-11e6-b90f-0ecfd53eb7d3/viz.json',
+                         {cartodb_logo: false, maxZoom:18, zoom:4, center_lat: 39.8282, center_lon: -98.5795 })
+        .done(function(vis, layers) {
+        map7 = vis.mapView.map;
+           map6.on('change:zoom change:center', function(e) {
+             changeMapState(map6, map7);
+           });
+           map7.on('change:zoom change:center', function(e) {
+            changeMapState(map7, map6);
+          
+         racdataLayer = layers[1].getSubLayer(0); 
+        //racdataLayer1 = layers[1].getSubLayer(1); 
+           });     
+        });
+      });
+     
        });
     
     function changeMapState(src,tgt){
