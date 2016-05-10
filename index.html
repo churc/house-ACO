@@ -44,8 +44,8 @@
       } 
       
       #map { 
-        height: 90%; 
-        width: 95%; 
+         height: 90%; 
+        width: 95%;  
         margin-left:15px;
         padding-top:10px;
         z-index: 8;
@@ -68,6 +68,23 @@
       } 
     
       #mapD { 
+        height: 50%; 
+        width: 48%; 
+        margin-left:15px;
+        padding: 10 10 10 10px;
+        z-index:70;
+      } 
+        
+    
+      #mapE { 
+        height: 50%; 
+        width: 48%; 
+        margin-left:15px;
+        padding: 10 10 10 10px;
+        z-index:60;
+      } 
+    
+      #mapF { 
         height: 50%; 
         width: 48%; 
         margin-left:15px;
@@ -123,19 +140,6 @@
         z-index:40;
       } 
     
-       .track-checkbox-wrapper {
-        position: inherit;
-        font-size: 13px; 
-        font-family: 'Courier';
-        line-height: 1.15;
-        color: 'darkslategrey'; 
-        padding-top:0px;
-        padding-left:7px;
-        margin-top:0px;
-        margin-left:0px;
-        z-index:5;
-      }
-    
         .ACO-button { 
          position:inherit;
          left: 40px; 
@@ -165,7 +169,47 @@
         font-family: 'Courier';
         } 
     
-	  	.poverty-button{
+	   .track-checkbox-wrapper {
+         position: inherit;
+        top: 25px;
+        right: 15px;
+        font-size: 13px; 
+        font-family: 'Courier';
+        line-height: 1;
+        color: 'darkslategrey'; 
+        padding-top:0px;
+        padding-left:7px;
+        margin-top:0px;
+        margin-left:0px;
+        z-index:5;
+      }  	
+    
+    	.agtype-checkbox-wrapper {
+        position: inherit;
+        top: 25px;
+        right: 15px;
+        font-size: 13px; 
+        font-family: 'Courier';
+        line-height: 1.15;
+        color: 'darkslategrey'; 
+        padding-top:0px;
+        padding-left:7px;
+        margin-top:0px;
+        margin-left:0px;
+        z-index:5;  
+        }
+         
+      
+         input[type=checkbox] {
+          border-radius:0;
+          box-shadow:none;
+          width:25px;
+          height: 25px;
+          color:#DDD200;
+      }
+    
+    
+        .poverty-button{
          position: inherit;
          cursor: pointer; 
          font-size: 13px; 
@@ -187,12 +231,12 @@
       }  
     
         .poverty-picker:hover {
-        font-size: 11.5px; 
-        font-family: 'Courier';
+         font-size: 11.5px; 
+         font-family: 'Courier';
       }  
       
-       .highschoolgrad-button {
-        position: inherit;
+        .highschoolgrad-button {
+         position: inherit;
          cursor: pointer; 
          font-size: 13px; 
          font-family: 'Courier'; 
@@ -213,8 +257,8 @@
       }  
     
         .highschoolgrad-picker:hover {
-        font-size: 11.5px; 
-        font-family: 'Courier';
+         font-size: 11.5px; 
+         font-family: 'Courier';
       }  
     
     	 .disability-button {
@@ -239,8 +283,8 @@
       }  
     
         .disability-picker:hover {
-        font-size: 11.5px; 
-        font-family: 'Courier';
+         font-size: 11.5px; 
+         font-family: 'Courier';
       }  
     
         .age65-button {
@@ -320,7 +364,8 @@
         font-size: 11.5px; 
         font-family: 'Courier';
       }  
-    
+  
+	  
 	  	.cartodb-popup-close-button {
         position: absolute;
         top: -12px;
@@ -355,7 +400,7 @@
       }
   
  /*--note not working --*/
-      div.cartodb-fullscreen{
+        div.cartodb-fullscreen{
         border-radius:0;
         float:left;
         box-shadow:none;
@@ -365,6 +410,7 @@
         div.cartodb-layer-selector-box{
         position:inherit;
         float:left;
+        background-color: rgba(232, 219, 174, 0.8);
         max-height:27px;
         margin-top: 53px;
         margin-left:80px;
@@ -376,7 +422,16 @@
         font-family: 'Courier';
         font-size:12px;
         line-height: 17px;
+         color:#333333; 
       }
+    
+    div.cartodb-layer-selector-box a.layers .count{
+        font-family: 'Courier';
+        font-size:12px;
+        line-height: 11px;
+        color:#333333; 
+        background:none;
+    }
     
  /*--//customize layer select dropdown main map CSS//--*/   
           div.cartodb-layer-selector-box div.cartodb-dropdown{
@@ -410,23 +465,28 @@
         opacity: 1; 
         color: 'darkslategrey'; 
         margin-bottom: 1px; 
-        margin-top:1px; 
-        padding-top:1px; 
+        margin-top:5px; 
+        padding-top:5px; 
         padding-bottom:0px; 
         padding-left:7px; 
         padding-right:0px; 
         border-radius:0px; 
-        max-width: 250px; 
+        max-width: 200px; 
+        background-color:none;
       } 
   
+       div.cartodb-popup.v2{
+        max-width: 200px;
+    }
         div.cartodb-popup p { 
         color: 'darkslategrey'; 
         font-family: sans-serif; 
       } 
   
  /*--map headers--*/
-      div..cartodb-header .content {
-      padding: 5px;
+       
+        div.cartodb-header .content {
+        padding: 7px;
       }
        
         div.cartodb-header .content .title{
@@ -517,7 +577,7 @@
 /*--small maps legends--*/
         div.cartodb-legend .legend-title{
         text-transform:lowercase;
-         margin-top: 0px;
+        margin-top: 0px;
         margin-bottom: 3px;
         text-align: center;
         }
@@ -541,22 +601,24 @@
 </head>  
    
  <body> 
-    <div id="map"></div> 
-    <div class="sidepanel">
+   <div id="map"> 
+   <div class="cartodb.header" style="display:inline-block; position:inherit;"></div></div>  
+   <div class="sidepanel">
     <div class="wrapper">
-       <div class="context subheader">
+   <div class="context subheader" >
+     
    
-          <p style="text-align: center; margin-top: 5px;">2016 Medicare Accountable Care Organization locations<a href="#"></a></p>
-        </div>
+     <p style="text-align: center; margin-top: 5px;">2016 Medicare Accountable Care Organization locations<a href="#"></a></p>
+  </div>
         
       
       <p><h5>Accountable Care Organizations vary greatly in size: some have one provider participant listed on the CMS Medicare ACO dataset, most have more and the largest has 328 providers.</h5></p>
-      <h4 style="margin-bottom:0px;">Select 2016 ACOs by Size:</h4>
+      <h4 style="margin-bottom:0px;">Select 2016 Medicare ACOs by Size:</h4>
     <div class="track-checkbox-wrapper" style="margin-top:0px; padding-top:0px; padding-left: 0px; margin-left:0px;">
       <ul>
 	<li>
-         <div class="ACO-button">
-      <div>Medicare ACOs vary by number of participants from 1 to 328:</div> 
+    <div class="ACO-button">
+    <div>Medicare ACOs vary by number of participants from 1 to 328:</div> 
       <select class="ACO-picker"> 
         <option value='all'>All</option> 
         <option value='1'>1</option>       
@@ -586,37 +648,47 @@
       </li>
         </ul>
    </div>
-              
-  <p></p>
-       
-       </div> 
- </div> 
+     
+   <h3></h3>
+       <p></p>
+        <h4 style="margin-bottom:0px;">Select Agreement Type:</h4>
+     <div class="agtype-checkbox-wrapper">
+       <ul>
+	<li>
+       <input type="checkbox" class="initial-checkbox" >Initial
+      </li>
+        <li>
+       <input type="checkbox" class="renewal-checkbox">Renewal
+         </li>
+        </ul>
+     </div>         
+    <p></p>  
+   </div> 
+</div> 
+ 
+	
   <p> </p>
   <p> </p>
    <div  id="mapB" style="border-bottom:15px; border-top: 60px;"></div>  
-  
-                 
+               
     <div class="wrapper">
-  
    </div> 
 
 <div class="leaflet-control-attribution leaflet-control" style="display:none"></div>
- 
-
 
 
 <!--//doublemap template first set of double maps//-->   
   
 
-    <div class="row">
+  <div class="row">
     <!--    <div class="col span12 context subheader"></div> -->
       <div class="col span2 empty" style="padding-top:30px"><p></p></div>
     <div class="col span2 empty"><p></p></div>
-      <div class="col span2 empty"><p></p></div>
+    <div class="col span2 empty"><p></p></div>
        
       
      <!-- <div class="col span12 context subheader"></div>--> 
-      <div class="col span12 context subheader" style="margin-bottom:30px"></div>
+  <div class="col span12 context subheader" style="margin-bottom:30px"></div>
     
   <div class="col span16">      
 
@@ -630,21 +702,37 @@
       
       <div class="col span2 empty"><p></p></div>
       <div class="col span12 context subheader" style="margin-bottom:30px"></div> 
-     </div>
+   </div>
      
 
 <div class="col span8 map" id="mapC" style="border-bottom:15px; border-top: 20px;"></div>
    
    
-   <div class="col span8 map" id="mapD" style="border-bottom:15px; border-top: 20px;"></div>
+<div class="col span8 map" id="mapD" style="border-bottom:15px; border-top: 20px;"></div>
 
+  
+<!--New maps E & F county rate -->  
+  <div class="row">
+      <div class="col span2 empty"><p></p></div>
+    <div class="col span2 empty"><p></p></div>
+      <div class="col span2 empty"><p></p></div>
+      <div class="col span16 context subheader">
+  <!--//  add text/////-->
+        <p></p>
+      </div>
+      <div class="col span2 empty"><p></p></div>
+ </div>
+  
+   <div class="col span8 map" id="mapE" style="border-bottom:15px; border-top: 20px;"></div>
    
   
-   
+   <div class="col span8 map" id="mapF" style="border-bottom:15px; border-top: 20px;"></div>
+
+
    
    <div class="row">
       <div class="col span2 empty"><p></p></div>
-    <div class="col span2 empty"><p></p></div>
+      <div class="col span2 empty"><p></p></div>
       <div class="col span2 empty"><p></p></div>
       <div class="col span16 context subheader">
   <!--//  add text/////-->
@@ -681,9 +769,8 @@
         <option value='98.7-86.35'>98.7%-86.35%</option> 
         <option value='86.35-75.25'>86.35%-75.25%</option> 
         <option value='75.25-46.7'>75.25%-46.7%</option> 
-    </select></div>
-    
-   </div>
+	   </select></div>    
+  </div>
 
     
        
@@ -697,7 +784,7 @@
         <p>Vulnerability data at county level <a href="#">{Link to }</a></p>
       </div>
       <div class="col span2 empty"><p></p></div>
-    </div>
+   </div>
   
  <div class="col span8 map" id="map4" style="margin-bottom:15px; "></div>
       <div class="col span8 map" id="map5" style="margin-bottom:15px; "></div>
@@ -711,7 +798,7 @@
         <option value='13.5-21.6'>13.5%-21.6%</option>
         <option value='21.6-34'>21.6%-34%</option> 
     </select></div> 
-     </div> 
+  </div> 
           
    <div class="col span8">
    <div class="age65-button" style="z-index:1;">
@@ -722,9 +809,8 @@
         <option value='3.3-14.05'>3.3%-14.05%</option> 
         <option value='14.05-22.45'>14.05%-22.45%</option> 
         <option value='22.45-48.7'>22.45%-48.7%</option> 
-    </select></div>
-    
-   </div>
+    </select></div> 
+ </div>
 		
   
    
@@ -753,7 +839,7 @@
         <option value='16.65-36.25'>16.65%-36.25%</option> 
         <option value='36.25-85.9'>36.25%-85.9%</option> 
     </select></div> 
-   </div>
+  </div>
   
    <div class="col span8">
    <div class="hisp-button" style="z-index:1;">
@@ -764,30 +850,29 @@
         <option value='0-14.45'>0%-14.45%</option> 
         <option value='14.45-34.3'>14.45%-34.3%</option> 
         <option value='34.3-95.7'>22.45%-95.7%</option> 
-    </select></div>
-    
-   </div>
+    </select></div> 
+  </div>
     
    
    
 <!--In the paragraph below give an introduction to your visualization-->
      
-       <div class="row">
+   <div class="row">
       <div class="col span2 empty"><p></p></div>
-    <div class="col span2 empty"><p></p></div>
+      <div class="col span2 empty"><p></p></div>
       <div class="col span2 empty"><p></p></div>
       <div class="col span16 context subheader">
   <!--//  add text/////-->
         <p>Vulnerability data at county level <a href="#">{Link to }</a></p>
       </div>
       <div class="col span2 empty"><p></p></div>
-    </div>
+   </div>
       
       
-      <div class="col span16">
+     <div class="col span16">
         <h4 style="text-align: center; padding:15px;">County level rates for high school graduates, poverty, disability, Hispanic and Latino, and Black or African American, 65 years and older in the United States</h4>
         <p style="text-align: center;">These maps detail in darker color areas of vulnerability where the county rate is higher for these vulnerability indicators.</p>
-      </div>
+    </div>
       <div class="col span2 empty"><p></p></div>
    
     
@@ -807,8 +892,8 @@
         The same has been done for ACO locations overlaid with selected low rate of people who graduated from high school graduate. The third set of maps does the same for ACO locations and disability rates with  ... % denoted as high rates.
         </p>
       </div>
-      <div class="col span2 empty"><p></p></div>
-    </div>
+     <div class="col span2 empty"><p></p></div>
+  </div>
 
 <!--second content block-->
     <div class="row">
@@ -818,17 +903,16 @@
       </div>
       <div class="col span2 empty"><p></p></div>
     </div>
-    <div class="row">
+   <div class="row">
       <div class="col span2 empty"><p></p></div>
       <div class="col span12">
         <p>The map allows the viewer to filter by vulnerability<a href="#"> data from US Census 2014 ACS</a> and to zoom into local areas to find ACO organizations and their provider sites.</p>
       </div>
       <div class="col span2 empty"><p></p></div>
-    </div>
+ </div>
  
     <div style="padding-top:40px; text-align: center;"><h3>Description</h3>
         <p>2014 ACS 5 year data showing percent below the poverty level by county </p>
-   
   </div>
 
 <!--Play fair and keep the attributions. If you do so, we will love you even more. :)-->

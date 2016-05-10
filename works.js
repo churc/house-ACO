@@ -5,15 +5,15 @@ var dataLayer2;
 var dataLayer3;
 
       $(document).ready(function() {
-        cartodb.createVis('map', 'https://thenewschool.cartodb.com/u/churc186/api/v2/viz/2e3e0bf8-1394-11e6-a6da-0e31c9be1b51/viz.json', {
+        cartodb.createVis('map', 'https://thenewschool.cartodb.com/u/churc186/api/v2/viz/3441dc88-f84f-11e5-b332-0e5db1731f59/viz.json', {
             cartodb_logo: false, fullscreen: true, maxZoom: 18, zoom: 4, center_lat: 39.8282, center_lon: -98.5795})
           .done(function(vis, layers){
 //--///////layers[1] has ALL your data layers from /CartoDB and you access different//ones by changing/the number you give to getSubLayer(). you want /something like: //dataLayer=layers[1].getSubLayer(0); /dataLayer=layers[1].getSubLayer(1);  
          
      dataLayer = layers[1].getSubLayer(0);
     dataLayer1 = layers[1].getSubLayer(1);
-	 dataLayer2 = layers[1].getSubLayer(2);
-  	 dataLayer3 = layers[1].getSubLayer(3);   
+	// dataLayer2 = layers[1].getSubLayer(2);
+  	 //dataLayer3 = layers[1].getSubLayer(3);   
      
           
 //--Tell CartoDB it's okay if there are embedded //videos and other files in our infowindow template//note this goes in the done ()function directly after //the datalayers - as here
@@ -49,7 +49,7 @@ var dataLayer3;
   		else if ($(this).val()==='201-329') {
      sql = "SELECT * FROM table_2016_mssp_acos_merge_participants_clean_count_2_merge WHERE count >=201 AND count <=328";
   } 
-          dataLayer3.setSQL(sql);
+          dataLayer1.setSQL(sql);
 //--////need to add -dataLayer1.setSQL(sql);-- if you want function to work on sublayer1
   }); 
 		 
@@ -63,7 +63,7 @@ var dataLayer3;
          function updateSql() {
  // Start with assuming we'll select everything
          
-          var sql2 = "SELECT * FROM table_2016_medicare_shared_savings_program_participants_3_28_16";
+          var sql2 = "SELECT * FROM table_2016_mssp_acos_merge_participants_clean_count_2_merge";
           
 // This will be the list of conditions, if anything's selected
           var whereConditions = [];
@@ -89,7 +89,7 @@ var dataLayer3;
           
 // Log out the SQL to ensure we have something that will work
           console.log(sql2);
-          dataLayer2.setSQL(sql2);
+          dataLayer1.setSQL(sql2);
         }
 
 //
@@ -103,9 +103,44 @@ var dataLayer3;
         }); 
         $('.track-3-checkbox').change(function () {
           updateSql();
-       });   
- }); 
-      
+       });  
+           
+        
+//new 
+       function updateSqlagtype() {
+		var sqlagtype = "SELECT * FROM table_2016_mssp_acos_merge_participants_clean_count_2_merge";
+           
+     var whereConditions1 = [];
+           
+        if ($('.initial-checkbox').is(':checked')) {
+            whereConditions1.push("aco_agreement_type = 'Initial'");
+          }
+          
+ // If track 2 is checked add another where condition
+         if ($('.renewal-checkbox').is(':checked')) {
+           whereConditions1.push("aco_agreement_type = 'Renewal'");
+         }  
+           
+     if (whereConditions1.length > 0) {
+           sqlagtype += ' WHERE ' + whereConditions1.join(' OR ');
+         }
+          
+          // Log out the SQL to ensure we have something that will work
+         console.log(sqlagtype);
+         dataLayer1.setSQL(sqlagtype);
+        }
+
+        // Initialize the checkboxes: add an event handler to watch for change
+        //
+       $('.initial-checkbox').change(function () {
+          updateSqlagtype();
+        });
+       $('.renewal-checkbox').change(function () {
+          updateSqlagtype();
+       });
+    }); 
+         
+       
 
  $(document).ready(function() {
         cartodb.createVis('mapB', 'https://thenewschool.cartodb.com/u/churc186/api/v2/viz/cf91f0e2-1483-11e6-b6e7-0e787de82d45/viz.json', {
@@ -155,7 +190,7 @@ var dataLayer3;
       });
               
     $(document).ready(function () { 
-        cartodb.createVis('mapD', 'https://thenewschool.cartodb.com/u/churc186/api/v2/viz/6207cf70-14e1-11e6-a6da-0e31c9be1b51/viz.json', {cartodb_logo: false, maxZoom:18, zoom:4, center_lat: 39.8282, center_lon: -98.5795 })
+        cartodb.createVis('mapD', 'https://thenewschool.cartodb.com/u/churc186/api/v2/viz/f283f498-13c9-11e6-8d27-0e674067d321/viz.json', {cartodb_logo: false, maxZoom:18, zoom:4, center_lat: 39.8282, center_lon: -98.5795 })
         .done(function(vis, layers) {
          mapD = vis.mapView.map;
           
@@ -178,6 +213,61 @@ var dataLayer3;
         });
     });  
  });
+
+
+
+
+//--////this is new/////--//
+ //Change the URL's below in order to change the maps that are being shown.
+ //map1 is the one on the left side and map2 is the one on the right side.
+ //Go to your map view in CartoDB, click on share, and copy the URL under the API section
+ //Check the cartodb.js documentation for more info
+ //http://developers.cartodb.com/documentation/cartodb-js.html
+    
+      var mapE,mapF;
+      var yrdataLayer;
+        
+    $(document).ready(function () { 
+      cartodb.createVis('mapE', 'https://thenewschool.cartodb.com/u/churc186/api/v2/viz/6207cf70-14e1-11e6-a6da-0e31c9be1b51/viz.json', {cartodb_logo: false, maxZoom:18, zoom:4, center_lat: 39.8282, center_lon: -98.5795 })
+      .done(function(vis, layers) {
+        mapE = vis.mapView.map;
+        yrdataLayer = layers[1].getSubLayer(0); 
+        yrdataLayer1 = layers[1].getSubLayer(1); 
+	    yrdataLayer2 = layers[1].getSubLayer(2);
+  	    yrdataLayer3 = layers[1].getSubLayer(3); 
+        
+        //--//// Tell CartoDB it's okay if there are embedded //videos and other files in our infowindow template - //note this goes in the done ()function directly after //the datalayers - as here
+            dataLayer.infowindow.set('sanitizeTemplate', 'false');       
+        // Tell CartoDB to use our template from above 
+            dataLayer.infowindow.set('template',  $('#infowindow_template').html());     
+          
+      });
+              
+    $(document).ready(function () { 
+        cartodb.createVis('mapF', 'https://thenewschool.cartodb.com/u/churc186/api/v2/viz/f283f498-13c9-11e6-8d27-0e674067d321/viz.json', {cartodb_logo: false, maxZoom:18, zoom:4, center_lat: 39.8282, center_lon: -98.5795 })
+        .done(function(vis, layers) {
+         mapF = vis.mapView.map;
+          
+           sdataLayer = layers[1].getSubLayer(0); 
+           sdataLayer1 = layers[1].getSubLayer(1); 
+          
+            //--//// Tell CartoDB it's okay if there are embedded //videos and other files in our infowindow template - //note this goes in the done ()function directly after //the datalayers - as here
+            dataLayer.infowindow.set('sanitizeTemplate', 'false');       
+        // Tell CartoDB to use our template from above 
+            dataLayer.infowindow.set('template',  $('#infowindow_template').html());     
+          
+        
+           mapE.on('change:zoom change:center', function(e) {
+             changeMapState(mapE, mapF);
+           });
+           mapF.on('change:zoom change:center', function(e) {
+            changeMapState(mapF, mapE);
+          });
+         
+        });
+    });  
+ });
+
 
 
       var map2,map3;
