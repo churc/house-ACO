@@ -180,7 +180,7 @@ var dataLayer3;
         UAdataLayer = layers[1].getSubLayer(0); 
         UAdataLayer1 = layers[1].getSubLayer(1); 
 	    UAdataLayer2 = layers[1].getSubLayer(2);
-  	    UAdataLayer3 = layers[1].getSubLayer(3); 
+  	    //UAdataLayer3 = layers[1].getSubLayer(3); 
         
         //--//// Tell CartoDB it's okay if there are embedded //videos and other files in our infowindow template - //note this goes in the done ()function directly after //the datalayers - as here
             dataLayer.infowindow.set('sanitizeTemplate', 'false');       
@@ -195,7 +195,7 @@ var dataLayer3;
          mapD = vis.mapView.map;
           
            adataLayer = layers[1].getSubLayer(0); 
-           adataLayer1 = layers[1].getSubLayer(1); 
+           //adataLayer1 = layers[1].getSubLayer(1); 
           
             //--//// Tell CartoDB it's okay if there are embedded //videos and other files in our infowindow template - //note this goes in the done ()function directly after //the datalayers - as here
             dataLayer.infowindow.set('sanitizeTemplate', 'false');       
@@ -244,7 +244,7 @@ var dataLayer3;
       });
               
     $(document).ready(function () { 
-        cartodb.createVis('mapF', 'https://thenewschool.cartodb.com/u/churc186/api/v2/viz/f283f498-13c9-11e6-8d27-0e674067d321/viz.json', {cartodb_logo: false, maxZoom:18, zoom:4, center_lat: 39.8282, center_lon: -98.5795 })
+        cartodb.createVis('mapF', 'https://thenewschool.cartodb.com/u/churc186/api/v2/viz/b5b1f48e-14dc-11e6-b753-0e31c9be1b51/viz.json', {cartodb_logo: false, maxZoom:18, zoom:4, center_lat: 39.8282, center_lon: -98.5795 })
         .done(function(vis, layers) {
          mapF = vis.mapView.map;
           
@@ -267,6 +267,8 @@ var dataLayer3;
         });
     });  
  });
+
+
 
 
 
@@ -510,7 +512,7 @@ var dataLayer3;
   else if(percenthisporlatinoandracetotpopnohlblkorafamalone==='36.25-85.9') {
     sqlb = "SELECT * FROM acs_14_5yr_dp05_demographic_race_ed_clean_merge_1 WHERE  percenthisporlatinoandracetotpopnohlblkorafamalone >=36.25 AND  percenthisporlatinoandracetotpopnohlblkorafamalone<=85.9";
   }
-        blafrdataLayer1.setSQL(sqlb);
+        blafrdataLayer.setSQL(sqlb);
         });
       
  //-----Adding button to select: Initialize the button: add an event //handler to watch for clicks      
@@ -529,7 +531,7 @@ var dataLayer3;
   else if(percenthisporlatinoandracetotpophisporlatino_ofanyrace==='34.3-95.7') {
     sqlhl = "SELECT * FROM acs_14_5yr_dp05_demographic_race_ed_clean_merge_1  WHERE percenthisporlatinoandracetotpophisporlatino_ofanyrace>=34.3 AND percenthisporlatinoandracetotpophisporlatino_ofanyrace<=95.7";
   }      
-          hispdataLayer1.setSQL(sqlhl);
+          hispdataLayer.setSQL(sqlhl);
         });       
        });
     

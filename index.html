@@ -44,8 +44,8 @@
       } 
       
       #map { 
-         height: 90%; 
-        width: 95%;  
+         height: 80.85%; 
+        width: 80.85%;  
         margin-left:15px;
         padding-top:10px;
         z-index: 8;
@@ -170,7 +170,7 @@
         } 
     
 	   .track-checkbox-wrapper {
-         position: inherit;
+        position: inherit;
         top: 25px;
         right: 15px;
         font-size: 13px; 
@@ -184,7 +184,7 @@
         z-index:5;
       }  	
     
-    	.agtype-checkbox-wrapper {
+        .agtype-checkbox-wrapper {
         position: inherit;
         top: 25px;
         right: 15px;
@@ -200,14 +200,13 @@
         }
          
       
-         input[type=checkbox] {
+        input[type=checkbox] {
           border-radius:0;
           box-shadow:none;
           width:25px;
-          height: 25px;
-          color:#DDD200;
+          height: 20px;
+          background-color:red;
       }
-    
     
         .poverty-button{
          position: inherit;
@@ -494,9 +493,9 @@
         height: 11px;
         font-family: 'Courier';
         font-size: 14px;
-        text-align:middle;
-          
+        text-align:middle;    
     }
+    
 /*--//customize legend//--*/ 
 	  	div.cartodb-legend {
       	padding-top: 8px;
@@ -602,10 +601,11 @@
    
  <body> 
    <div id="map"> 
-   <div class="cartodb.header" style="display:inline-block; position:inherit;"></div></div>  
+   <div class="cartodb-header">
+     </div>
    <div class="sidepanel">
-    <div class="wrapper">
-   <div class="context subheader" >
+    <div class="wrapper"> 
+   <div class="context subheader">
      
    
      <p style="text-align: center; margin-top: 5px;">2016 Medicare Accountable Care Organization locations<a href="#"></a></p>
@@ -614,7 +614,7 @@
       
       <p><h5>Accountable Care Organizations vary greatly in size: some have one provider participant listed on the CMS Medicare ACO dataset, most have more and the largest has 328 providers.</h5></p>
       <h4 style="margin-bottom:0px;">Select 2016 Medicare ACOs by Size:</h4>
-    <div class="track-checkbox-wrapper" style="margin-top:0px; padding-top:0px; padding-left: 0px; margin-left:0px;">
+    <div class="track-checkbox-wrapper" style="margin-top:0px; padding-top:0px; padding-left: 0px; margin-left:0px; display:-moz-grid-group;">
       <ul>
 	<li>
     <div class="ACO-button">
@@ -635,7 +635,7 @@
       <h3></h3>
        <p></p>
         <h4 style="margin-bottom:0px;">Select Track:</h4>
-    <div class="track-checkbox-wrapper">
+    <div class="track-checkbox-wrapper" style="display:-moz-grid-group;">
       <ul>
 	<li>
       <input type="checkbox" class="track-1-checkbox">Track 1
@@ -652,7 +652,7 @@
    <h3></h3>
        <p></p>
         <h4 style="margin-bottom:0px;">Select Agreement Type:</h4>
-     <div class="agtype-checkbox-wrapper">
+     <div class="agtype-checkbox-wrapper" style="display:-moz-grid-group;">
        <ul>
 	<li>
        <input type="checkbox" class="initial-checkbox" >Initial
@@ -664,7 +664,9 @@
      </div>         
     <p></p>  
    </div> 
+   </div>
 </div> 
+  </div>
  
 	
   <p> </p>
