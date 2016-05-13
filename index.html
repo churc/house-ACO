@@ -206,6 +206,9 @@
           width:25px;
           height: 20px;
           background-color:red;
+          line-height:2em;
+          margin-bottom:0px;
+          vertical-align:bottom;
       }
     
         .poverty-button{
@@ -444,6 +447,7 @@
           font-size:12px;
           padding: 3px; 
        } 
+   
  
 /*--//customize layer select dropdown main map switch CSS//--*/ 
     
@@ -572,6 +576,7 @@
         text-align: left; 
       } 
     
+  
     
 /*--small maps legends--*/
         div.cartodb-legend .legend-title{
@@ -600,6 +605,7 @@
 </head>  
    
  <body> 
+   
    <div id="map"> 
    <div class="cartodb-header">
      </div>
@@ -608,17 +614,17 @@
    <div class="context subheader">
      
    
-     <p style="text-align: center; margin-top: 5px;">2016 Medicare Accountable Care Organization locations<a href="#"></a></p>
+     <h3 style="text-align: center; margin-top: 2px; border-top:0px; padding-top:0px; margin-bottom:8px;color:#CA2C12; font-size:15px;">2016 Medicare Accountable Care Organization locations: 433, February 2016<a href="#"></a></h3>
   </div>
         
       
-      <p><h5>Accountable Care Organizations vary greatly in size: some have one provider participant listed on the CMS Medicare ACO dataset, most have more and the largest has 328 providers.</h5></p>
+      <p><h5 style="text-align:center; margin-top:0px;">Medicare Accountable Care Organizations (ACOs) vary greatly in size: some have one provider participant listed on the CMS Medicare ACO dataset, most have more and the largest has 328 providers.</h5></p>
       <h4 style="margin-bottom:0px;">Select 2016 Medicare ACOs by Size:</h4>
     <div class="track-checkbox-wrapper" style="margin-top:0px; padding-top:0px; padding-left: 0px; margin-left:0px; display:-moz-grid-group;">
       <ul>
 	<li>
     <div class="ACO-button">
-    <div>Medicare ACOs vary by number of participants from 1 to 328:</div> 
+    <div style="margin-bottom:5px;">Medicare ACOs vary by number of participants from 1 to 328:</div> 
       <select class="ACO-picker"> 
         <option value='all'>All</option> 
         <option value='1'>1</option>       
@@ -637,7 +643,7 @@
         <h4 style="margin-bottom:0px;">Select Track:</h4>
     <div class="track-checkbox-wrapper" style="display:-moz-grid-group;">
       <ul>
-	<li>
+	 <li>
       <input type="checkbox" class="track-1-checkbox">Track 1
       </li>
         <li>
@@ -670,6 +676,7 @@
  
 	
   <p> </p>
+
   <p> </p>
    <div  id="mapB" style="border-bottom:15px; border-top: 60px;"></div>  
                
@@ -679,7 +686,7 @@
 <div class="leaflet-control-attribution leaflet-control" style="display:none"></div>
 
 
-<!--//doublemap template first set of double maps//-->   
+<!--//doublemap template//-->   
   
 
   <div class="row">
@@ -694,12 +701,29 @@
     
   <div class="col span16">      
 
-        <p style="padding-top:15px">Data is from The Centers for Medicare and Medicaid Services, CMS, part of the Department of Health and Human Services. <a href=''>https://data.cms.gov/ACO/2016-Medicare-Shared-Savings-Program-Accountable-C/i683-k66m</a> CMS notes that "The Medicare Shared Savings Program (or Shared Savings Program) facilitates coordination among providers to improve the quality of care for Medicare fee-for-service beneficiaries while reducing the growth in health care costs. Eligible providers, hospitals, and suppliers may apply to participate in the Shared Savings Program by creating or participating in an Accountable Care Organization (ACO)."</p>
-      Copy and paste the div below for creating content blocks
-        <h3>Description</h3>
-        <p>In February 2016, there were 433 Medicare Accountable Care Organizations (ACOs) across the country. Each Medicare ACO brings several providers together to work with each other as a care team. The Medicare ACO vary in size from 1 number of providers to 328 providers. The map shows each Medicare ACO location with ACO number and track (1, 2, or 3), and the next step is to link the providers each ACO is made up of. 
+        <p style="padding-top:15px">This project looks at the locations of Medicare Accountable Care Organizations (ACOs) in the U.S. The ACO model, which started in 2011, is a relatively new health care model. There is currently a need for more information on the national picture, including basic demographic details on the ACOs, where they are and who they are serving. ACO locations are being mapped, but these maps use the data to compare the intersection of organization location and vulnerability. I selected health care vulnerability indicators, mapping indicator percents at a county level with Medicare ACO locations. </p>
+<p>I did several maps to assess the locations in 2014, 2015 and 2016 (map 5), the relation of locations to urban areas (maps 2 and 3), and to hospital referral regions (map 2). I looked at the rate of Medicare ACOs by county land area (map 4) to see how the rate varied from the number per county. 
+These investigations led me to focus on poverty and the intersection of high rates of poverty and Medicare ACOs. Poverty is a known indicator of worse health outcomes. This work attempts to give a national overview of Medicare ACO locations and to see whether Medicare ACOs are in areas of high poverty.
+Due to data limitations, I used national Medicare data only, the locations do not include state Medicaid, private insurers, Accelerated Development Learning Sessions (ADLS), or other ACO location data.</p>
+  <p>In February 2016, CMS listed 433 Medicare ACOs, and at the end of January 2016, Leavitt Partners estimated 838 active ACOs of all kinds (David Muhlestein and Mark McClellan, <a href='http://healthaffairs.org/blog/2016/04/21/accountable-care-organizations-in-2016-private-and-public-sector-growth-and-dispersion/'>Accountable Care Organizations In 2016: Private And Public-Sector Growth And Dispersion</a>, April 21, 2016).</p>
+
+<p>The 2014, 2015 and 2016 Medicare ACO locations are mapped to look at differences across years (map 5).
+Each ACO is made up of provider participants. There is a wide variation in the size of the ACOs – map 6 is a heat map of the ACOs by number of providers – thus larger ACOs are shown in a larger size on the map.
+The urban area / urban cluster maps show locations in relation to urban areas, and were spatially joined using GIS to ascertain that 87% of Medicare ACOs are within urban areas or urban clusters (map 3).
+By dividing the number of ACOs in each county into the county land area (square meters) I mapped the rate per county: map 4.</p>
+<p>The health care indicator maps use US Census 2014 ACS 5 year data and map rates per county for poverty, high school graduation, disability, 65 years and older, Black or African American alone, and Hispanic or Latino of any race (maps 6 – 11).
+
+Health care outcomes vary by poverty level: map 1 focuses on where high poverty rates by county are. Taking the location of Medicare ACOs and mapping by high poverty, the areas where there is high poverty and no ACO locations within x miles is shown. </p>
+          
+ <p> The Medicare Accountable Care Organization (ACO) data is from The Centers for Medicare and Medicaid Services (CMS), part of the Department of Health and Human Services: <a href='https://data.cms.gov/ACO/2016-Medicare-Shared-Savings-Program-Organizations/5kdu-cnmy'>2016 Medicare ACO data</a> which lists 433 ACOs in the United States as of February 2016:
+          <div><iframe width="500px" title="2016 Medicare Shared Savings Program Organizations" height="425px" src="https://data.cms.gov/w/5kdu-cnmy/vmsd-2w5m?cur=qvf2yBispOb&from=root" frameborder="0"scrolling="no"><a href="https://data.cms.gov/ACO/2016-Medicare-Shared-Savings-Program-Organizations/5kdu-cnmy" title="2016 Medicare Shared Savings Program Organizations" target="_blank">2016 Medicare Shared Savings Program Organizations</a></iframe><p style="border-bottom:0px;margin-bottom:0px;padding-bottom:0px; "><h6 style="text-align:0px; margin-top:0px; ">Socrata</h6></p></div>
+    <a href='https://data.cms.gov/ACO/2016-Medicare-Shared-Savings-Program-Organizations/5kdu-cnmy/about'>CMS notes </a>that "The Medicare Shared Savings Program (or Shared Savings Program) facilitates coordination among providers to improve the quality of care for Medicare fee-for-service beneficiaries while reducing the growth in health care costs. Eligible providers, hospitals, and suppliers may apply to participate in the Shared Savings Program by creating or participating in an Accountable Care Organization (ACO)."</p>
+      
+        <h3></h3>
+        <p>Each Medicare ACO brings provider participants together to work with each other as a care team. These ACOs vary in size from only 1 provider to as many as 328 providers. The total number of providers in February 2016 were 14,817 with an average ACO size coordinating care across 34 providers. </p>
+<p><strong>Map 1:</strong> the 433 Medicare ACO locations - the selector on the right allows you to select by ACO size, by ACO track (1, 2, or 3), and by ACO agreement type (initial and renewal). To see details on each ACO, click on the ACO red bullets for each infowindow. 
        </p>
-        <p>The Medicare ACOs are mapped from CMS's ACO database which lists 433 ACOs, February 2016. <a href="#">{Link to CMS website}</a></p>
+        <p></p>
       </div>
       
       <div class="col span2 empty"><p></p></div>
@@ -917,13 +941,52 @@
         <p>2014 ACS 5 year data showing percent below the poverty level by county </p>
   </div>
 
-<!--Play fair and keep the attributions. If you do so, we will love you even more. :)-->
+
+
+<!--data sources-->
+   <div class="row">
+     <div class="col span2 empty"><p></p></div>
+      <div class="col span12 context footer" style="text-align:center;">
+        <p style="margin-top:15px;"><h4 style="padding-top:20px; padding-bottom:4px; margin-top:0px;"><strong>Data Sources:</strong> All Medicare ACO location data is from CMS at 
+             <a href="https://data.cms.gov">data.cms.gov:</a> </p>
+           <p style="line-height:0.7;">Medicare ACO locations:<a href="https://data.cms.gov/ACO/2016-Medicare-Shared-Savings-Program-Organizations/5kdu-cnmy"> 2016 Medicare ACO data and CMS map</a></p>
+         <p><a href="https://data.cms.gov/ACO/2015-Medicare-Shared-Savings-Program-Accountable-C/ay8x-m5k6">2015 Medicare ACO dataset</a></p>
+         <p><a href="https://data.cms.gov/ACO/2014-Medicare-Shared-Savings-Program-Accountable-C/ni8n-2cnd">2014 Medicare ACO dataset</a></p>
+        <p>Medicare ACO provider participants:<a href="https://data.cms.gov/ACO/2016-Medicare-Shared-Savings-Program-Participants/82gp-26ev"> 2016 Medicare ACO participant dataset</a></p>
+         <p><a href="https://data.cms.gov/ACO/2015-Medicare-Shared-Savings-Program-Accountable-C/pfam-u3vp">2015 Medicare ACO participant dataset</a></p>
+         <p><a href="https://data.cms.gov/ACO/2014-Medicare-Shared-Savings-Program-Accountable-C/s62r-ytji">2014 Medicare ACO participant dataset</a></h4></p>
+     
+<p style="margin-top:15px;"><h4 style="padding-top:20px; padding-bottom:4px; margin-top:0px;">All demographic, county level data is from the U.S. Census Bureau, 2010-2014 American Community Survey 5-Year Estimates at <a href="http://factfinder.census.gov/faces/nav/jsf/pages/index.xhtml"> U.S. Census American Fact Finder</a></p>
+
+<p style="line-height:0.7;">S1701: POVERTY STATUS IN THE PAST 12 MONTHS</p>
+<p style="line-height:0.7;">S1501: EDUCATIONAL ATTAINMENT</p>
+<p style="line-height:0.7;">S1810: DISABILITY CHARACTERISTICS </p>
+<p style="line-height:0.7;">S0101: AGE AND SEX </p>
+<p style="line-height:0.7;">DP05:  ACS DEMOGRAPHIC AND HOUSING ESTIMATES</p>
+
+<p style="line-height:0.7;"><a href="https://www.census.gov/geo/maps-data/data/cbf/cbf_counties.html">Tiger County Boundary U.S. 2014 shapefiles 5m</a></p>
+<p style="line-height:0.7;"><a href="https://www.census.gov/geo/maps-data/data/cbf/cbf_ua.html#ua2014">Tiger Urban Area U.S. 2014 shapefiles 500k</a></p>
+
+<p style="margin-top:15px;"><h4 style="padding-top:20px; padding-bottom:10px; margin-top:0px;">Hospital Referral Region data is from The Dartmouth Atlas of Health Care, <a href="http://www.dartmouthatlas.org/tools/downloads.aspx?tab=39"> Geographic Boundary Files</a>. For information about the hospital referral regions: see <a href="http://www.dartmouthatlas.org/downloads/methods/geogappdx.pdf">Appendix on the Geography of Health Care in the United States</a></h4></p>
+
+<p style="margin-top:15px;"><h4 style="padding-top:20px; padding-bottom:4px; margin-top:0px;">For more information on Medicare ACOs, see The Centers for Medicare and Medicaid Services (CMS) Innovation Center: <a href="https://innovation.cms.gov/initiatives/aco/">General Information: Accountable Care Organizations (ACOs)</a></p>
+	<p>CMS: <a href="https://www.cms.gov/Medicare/Medicare-Fee-for-Service-Payment/ACO/">Accountable Care Organizations</a></p>
+	<p>The Official U.S. Government Site for Medicare: <a href="https://www.medicare.gov/manage-your-health/coordinating-your-care/accountable-care-organizations.html">Medicare.gov: Accountable Care Organizations</a></p>
+	<p>Kaiser: <a href="http://khn.org/news/aco-accountable-care-organization-faq//">The ABCs of ACOs</a>.</p>
+ <p>Department of Health and Human Services (HHS): <a href="https://kaiserhealthnews.files.wordpress.com/2014/04/aco_summary_factsheet_icn907404.pdf">Summary of Final Rule Provisions on Accountable Care Organizations</a></p>
+<p>Department of Health and Human Services (HHS): <a href="https://www.cms.gov/medicare/medicare-fee-for-service-payment/sharedsavingsprogram/downloads/aco_providers_factsheet_icn907406.pdf">Accountable Care Organizations: What Providers Need to Know</a></h4></p>
+</div>
+</div>
+        
+  <!--Play fair and keep the attributions. If you do so, we will love you even more. :)-->
     <div class="row">
       <div class="col span2 empty"><p></p></div>
       <div class="col span12 context footer">
-        <p>Create your maps with ease using <a href="http://cartodb.com">CartoDB</a></p>
-      </div>
+        <p>Maps created in <a href="http://cartodb.com">CartoDB</a></p>
+      <p>Basemaps created in <a href="https://www.mapbox.com/mapbox-studio/">Mapbox</a></p>
+      </div>      
       <div class="col span2 empty"><p></p></div>
     </div>
+
   </body> 
 </html> 
