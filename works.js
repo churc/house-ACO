@@ -321,14 +321,14 @@ var dataLayer3;
           if (perc_below_povlevel_hc03 === 'all') {
      sqlpov = "SELECT * FROM churc186.acs_14_5yr_s1701_pov_clean_merge";
   }
-        else if(perc_below_povlevel_hc03==='1-14.9') {
-    sqlpov = "SELECT * FROM churc186.acs_14_5yr_s1701_pov_clean_merge WHERE perc_below_povlevel_hc03 =>1 AND perc_below_povlevel_hc03 <14.9";
+        else if(perc_below_povlevel_hc03==='1-18.2') {
+    sqlpov = "SELECT * FROM churc186.acs_14_5yr_s1701_pov_clean_merge WHERE perc_below_povlevel_hc03 =>1 AND perc_below_povlevel_hc03 <18.2";
   }
-         else if(perc_below_povlevel_hc03==='14.9-26') {
-    sqlpov = "SELECT * FROM churc186.acs_14_5yr_s1701_pov_clean_merge WHERE perc_below_povlevel_hc03 >=14.9 AND perc_below_povlevel_hc03 <26";
+         else if(perc_below_povlevel_hc03==='18.2-35.4') {
+    sqlpov = "SELECT * FROM churc186.acs_14_5yr_s1701_pov_clean_merge WHERE perc_below_povlevel_hc03 >=18.2 AND perc_below_povlevel_hc03 <35.4";
   }
-  else if(perc_below_povlevel_hc03==='26-52.6') {
-    sqlpov = "SELECT * FROM churc186.acs_14_5yr_s1701_pov_clean_merge WHERE perc_below_povlevel_hc03 >=26 AND perc_below_povlevel_hc03 <52.6";
+  else if(perc_below_povlevel_hc03==='35.4-52.6') {
+    sqlpov = "SELECT * FROM churc186.acs_14_5yr_s1701_pov_clean_merge WHERE perc_below_povlevel_hc03 >=35.4 AND perc_below_povlevel_hc03 <52.6";
   }       
           povdataLayer.setSQL(sqlpov);
         });
@@ -341,14 +341,14 @@ var dataLayer3;
           if (totestperchsg_hc01_est_vc16 === 'all') {
      sqled = "SELECT * FROM acs_14_5yr_s1501_education_clean_merge";
   }
-        else if(totestperchsg_hc01_est_vc16==='98.7-86.35') {
-    sqled = "SELECT * FROM acs_14_5yr_s1501_education_clean_merge WHERE totestperchsg_hc01_est_vc16 <=98.7 AND totestperchsg_hc01_est_vc16 >86.35";
+        else if(totestperchsg_hc01_est_vc16==='98.7-81.37') {
+    sqled = "SELECT * FROM acs_14_5yr_s1501_education_clean_merge WHERE totestperchsg_hc01_est_vc16 <=98.7 AND totestperchsg_hc01_est_vc16 >81.37";
   }
-         else if(totestperchsg_hc01_est_vc16==='86.35-75.25') {
-    sqled = "SELECT * FROM acs_14_5yr_s1501_education_clean_merge WHERE totestperchsg_hc01_est_vc16 <=86.35 AND totestperchsg_hc01_est_vc16 >75.25";
+         else if(totestperchsg_hc01_est_vc16==='81.37-64.03') {
+    sqled = "SELECT * FROM acs_14_5yr_s1501_education_clean_merge WHERE totestperchsg_hc01_est_vc16 <=81.37 AND totestperchsg_hc01_est_vc16 >64.03";
   }
-  else if(totestperchsg_hc01_est_vc16==='75.25-46.7') {
-    sqled = "SELECT * FROM acs_14_5yr_s1501_education_clean_merge WHERE totestperchsg_hc01_est_vc16 <=75.25 AND totestperchsg_hc01_est_vc16 >=46.7";
+  else if(totestperchsg_hc01_est_vc16==='64.03-46.7') {
+    sqled = "SELECT * FROM acs_14_5yr_s1501_education_clean_merge WHERE totestperchsg_hc01_est_vc16 <=64.03 AND totestperchsg_hc01_est_vc16 >=46.7";
   }      
           eddataLayer.setSQL(sqled);
         });
@@ -412,14 +412,14 @@ var dataLayer3;
           if (percwadisab_esttotcivnoninstpop_hc03_est_vc01 === 'all') {
      sqldis = "SELECT * FROM acs_14_5yr_s1810_disability_clean_merge";
   }
-        else if(percwadisab_esttotcivnoninstpop_hc03_est_vc01==='4.4-13.5') {
-    sqldis = "SELECT * FROM acs_14_5yr_s1810_disability_clean_merge WHERE percwadisab_esttotcivnoninstpop_hc03_est_vc01 >=4.4 AND percwadisab_esttotcivnoninstpop_hc03_est_vc01 <13.5";
+        else if(percwadisab_esttotcivnoninstpop_hc03_est_vc01==='4.4-14.27') {
+    sqldis = "SELECT * FROM acs_14_5yr_s1810_disability_clean_merge WHERE percwadisab_esttotcivnoninstpop_hc03_est_vc01 >=4.4 AND percwadisab_esttotcivnoninstpop_hc03_est_vc01 <14.27";
   }
-         else if(percwadisab_esttotcivnoninstpop_hc03_est_vc01==='13.5-21.6') {
-    sqldis = "SELECT * FROM acs_14_5yr_s1810_disability_clean_merge WHERE percwadisab_esttotcivnoninstpop_hc03_est_vc01 >=13.5 AND percwadisab_esttotcivnoninstpop_hc03_est_vc01 <21.6";
+         else if(percwadisab_esttotcivnoninstpop_hc03_est_vc01==='14.27-24.13') {
+    sqldis = "SELECT * FROM acs_14_5yr_s1810_disability_clean_merge WHERE percwadisab_esttotcivnoninstpop_hc03_est_vc01 >=14.27 AND percwadisab_esttotcivnoninstpop_hc03_est_vc01 <24.13";
   }
-  else if(percwadisab_esttotcivnoninstpop_hc03_est_vc01==='21.6-34') {
-    sqldis = "SELECT * FROM acs_14_5yr_s1810_disability_clean_merge WHERE percwadisab_esttotcivnoninstpop_hc03_est_vc01 >=21.6 AND percwadisab_esttotcivnoninstpop_hc03_est_vc01 <=34";
+  else if(percwadisab_esttotcivnoninstpop_hc03_est_vc01==='24.13-34') {
+    sqldis = "SELECT * FROM acs_14_5yr_s1810_disability_clean_merge WHERE percwadisab_esttotcivnoninstpop_hc03_est_vc01 >=24.13 AND percwadisab_esttotcivnoninstpop_hc03_est_vc01 <=34";
   }
        
         disdataLayer.setSQL(sqldis);
@@ -432,14 +432,14 @@ var dataLayer3;
           if (total_65_andover === 'all') {
      sqlage = "SELECT * FROM acs_14_5yr_s0101_with_ann_65_clean_merge";
   }
-        else if(total_65_andover==='3.3-14.05') {
-    sqlage = "SELECT * FROM acs_14_5yr_s0101_with_ann_65_clean_merge WHERE total_65_andover >=3.3 AND total_65_andover <14.05";
+        else if(total_65_andover==='3.3-18.43') {
+    sqlage = "SELECT * FROM acs_14_5yr_s0101_with_ann_65_clean_merge WHERE total_65_andover >=3.3 AND total_65_andover <18.43";
   }
-         else if(total_65_andover==='14.05-22.45') {
-    sqlage = "SELECT * FROM acs_14_5yr_s0101_with_ann_65_clean_merge WHERE total_65_andover >=14.05 AND total_65_andover <22.45";
+         else if(total_65_andover==='18.43-33.57') {
+    sqlage = "SELECT * FROM acs_14_5yr_s0101_with_ann_65_clean_merge WHERE total_65_andover >=18.43 AND total_65_andover <33.57";
   }
-  else if(total_65_andover==='22.45-48.7') {
-    sqlage = "SELECT * FROM acs_14_5yr_s0101_with_ann_65_clean_merge WHERE total_65_andover >=22.45 AND total_65_andover <=48.7";
+  else if(total_65_andover==='33.57-48.7') {
+    sqlage = "SELECT * FROM acs_14_5yr_s0101_with_ann_65_clean_merge WHERE total_65_andover >=33.57 AND total_65_andover <=48.7";
   }      
           agedataLayer.setSQL(sqlage);
         });      
@@ -503,14 +503,14 @@ var dataLayer3;
           if (percenthisporlatinoandracetotpopnohlblkorafamalone=== 'all') {
      sqlb = "SELECT * FROM acs_14_5yr_dp05_demographic_race_ed_clean_merge_1";
   }
-        else if(percenthisporlatinoandracetotpopnohlblkorafamalone==='0-16.65') {
-    sqlb = "SELECT * FROM acs_14_5yr_dp05_demographic_race_ed_clean_merge_1 WHERE  percenthisporlatinoandracetotpopnohlblkorafamalone >=0 AND  percenthisporlatinoandracetotpopnohlblkorafamalone<16.65";
+        else if(percenthisporlatinoandracetotpopnohlblkorafamalone==='0-28.63') {
+    sqlb = "SELECT * FROM acs_14_5yr_dp05_demographic_race_ed_clean_merge_1 WHERE  percenthisporlatinoandracetotpopnohlblkorafamalone >=0 AND  percenthisporlatinoandracetotpopnohlblkorafamalone<28.63";
   }
-         else if(percenthisporlatinoandracetotpopnohlblkorafamalone==='16.65-36.25') {
-    sqlb = "SELECT * FROM acs_14_5yr_dp05_demographic_race_ed_clean_merge_1 WHERE  percenthisporlatinoandracetotpopnohlblkorafamalone >=16.65 AND  percenthisporlatinoandracetotpopnohlblkorafamalone<36.25";
+         else if(percenthisporlatinoandracetotpopnohlblkorafamalone==='28.63-57.27') {
+    sqlb = "SELECT * FROM acs_14_5yr_dp05_demographic_race_ed_clean_merge_1 WHERE  percenthisporlatinoandracetotpopnohlblkorafamalone >=28.63 AND  percenthisporlatinoandracetotpopnohlblkorafamalone<57.27";
   }
-  else if(percenthisporlatinoandracetotpopnohlblkorafamalone==='36.25-85.9') {
-    sqlb = "SELECT * FROM acs_14_5yr_dp05_demographic_race_ed_clean_merge_1 WHERE  percenthisporlatinoandracetotpopnohlblkorafamalone >=36.25 AND  percenthisporlatinoandracetotpopnohlblkorafamalone<=85.9";
+  else if(percenthisporlatinoandracetotpopnohlblkorafamalone==='57.27-85.9') {
+    sqlb = "SELECT * FROM acs_14_5yr_dp05_demographic_race_ed_clean_merge_1 WHERE  percenthisporlatinoandracetotpopnohlblkorafamalone >=57.27 AND  percenthisporlatinoandracetotpopnohlblkorafamalone<=85.9";
   }
         blafrdataLayer.setSQL(sqlb);
         });
@@ -522,14 +522,14 @@ var dataLayer3;
           if (percenthisporlatinoandracetotpophisporlatino_ofanyrace === 'all') {
      sqlhl = "SELECT * FROM acs_14_5yr_dp05_demographic_race_ed_clean_merge_1";
   }
-        else if(percenthisporlatinoandracetotpophisporlatino_ofanyrace==='0-14.45') {
-    sqlhl = "SELECT * FROM acs_14_5yr_dp05_demographic_race_ed_clean_merge_1  WHERE percenthisporlatinoandracetotpophisporlatino_ofanyrace >=0 AND percenthisporlatinoandracetotpophisporlatino_ofanyrace <14.45";
+        else if(percenthisporlatinoandracetotpophisporlatino_ofanyrace==='0-31.9') {
+    sqlhl = "SELECT * FROM acs_14_5yr_dp05_demographic_race_ed_clean_merge_1  WHERE percenthisporlatinoandracetotpophisporlatino_ofanyrace >=0 AND percenthisporlatinoandracetotpophisporlatino_ofanyrace <31.9";
   }
-         else if(percenthisporlatinoandracetotpophisporlatino_ofanyrace==='14.45-34.3') {
-    sqlhl = "SELECT * FROM acs_14_5yr_dp05_demographic_race_ed_clean_merge_1  WHERE percenthisporlatinoandracetotpophisporlatino_ofanyrace >=14.45 AND percenthisporlatinoandracetotpophisporlatino_ofanyrace<34.3";
+         else if(percenthisporlatinoandracetotpophisporlatino_ofanyrace==='31.9-63.8') {
+    sqlhl = "SELECT * FROM acs_14_5yr_dp05_demographic_race_ed_clean_merge_1  WHERE percenthisporlatinoandracetotpophisporlatino_ofanyrace >=31.9 AND percenthisporlatinoandracetotpophisporlatino_ofanyrace<63.8";
   }
-  else if(percenthisporlatinoandracetotpophisporlatino_ofanyrace==='34.3-95.7') {
-    sqlhl = "SELECT * FROM acs_14_5yr_dp05_demographic_race_ed_clean_merge_1  WHERE percenthisporlatinoandracetotpophisporlatino_ofanyrace>=34.3 AND percenthisporlatinoandracetotpophisporlatino_ofanyrace<=95.7";
+  else if(percenthisporlatinoandracetotpophisporlatino_ofanyrace==='63.8-95.7') {
+    sqlhl = "SELECT * FROM acs_14_5yr_dp05_demographic_race_ed_clean_merge_1  WHERE percenthisporlatinoandracetotpophisporlatino_ofanyrace>=63.8 AND percenthisporlatinoandracetotpophisporlatino_ofanyrace<=95.7";
   }      
           hispdataLayer.setSQL(sqlhl);
         });       
