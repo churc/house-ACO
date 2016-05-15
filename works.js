@@ -249,7 +249,7 @@ var dataLayer3;
          mapF = vis.mapView.map;
           
            sdataLayer = layers[1].getSubLayer(0); 
-           sdataLayer1 = layers[1].getSubLayer(1); 
+           //sdataLayer1 = layers[1].getSubLayer(1); 
           
             //--//// Tell CartoDB it's okay if there are embedded //videos and other files in our infowindow template - //note this goes in the done ()function directly after //the datalayers - as here
             dataLayer.infowindow.set('sanitizeTemplate', 'false');       
