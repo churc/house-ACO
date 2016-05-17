@@ -13,7 +13,7 @@ var dataLayer3;
      dataLayer = layers[1].getSubLayer(0);
     dataLayer1 = layers[1].getSubLayer(1);
 	dataLayer2 = layers[1].getSubLayer(2);
-  	 dataLayer3 = layers[1].getSubLayer(3);   
+  	 //dataLayer3 = layers[1].getSubLayer(3);   
      
           
 //--Tell CartoDB it's okay if there are embedded //videos and other files in our infowindow template//note this goes in the done ()function directly after //the datalayers - as here
@@ -142,6 +142,8 @@ var dataLayer3;
          
        
 
+    
+
  $(document).ready(function() {
         cartodb.createVis('mapB', 'https://thenewschool.cartodb.com/u/churc186/api/v2/viz/cf91f0e2-1483-11e6-b6e7-0e787de82d45/viz.json', {
             cartodb_logo: false, fullscreen: true, maxZoom: 18, zoom: 6, center_lat: 39.8282, center_lon: -98.5795})
@@ -174,7 +176,7 @@ var dataLayer3;
       var UAdataLayer;
         
     $(document).ready(function () { 
-      cartodb.createVis('mapC', 'https://thenewschool.cartodb.com/u/churc186/api/v2/viz/dc30b2b6-149c-11e6-90aa-0e5db1731f59/viz.json', {cartodb_logo: false, maxZoom:18, zoom:6, center_lat: 39.8282, center_lon: -98.5795 })
+      cartodb.createVis('mapC', 'https://thenewschool.cartodb.com/u/churc186/api/v2/viz/dc30b2b6-149c-11e6-90aa-0e5db1731f59/viz.json', {cartodb_logo: false, maxZoom:18, zoom:5, center_lat: 39.8282, center_lon: -98.5795 })
       .done(function(vis, layers) {
         mapC = vis.mapView.map;
         UAdataLayer = layers[1].getSubLayer(0); 
@@ -217,6 +219,7 @@ var dataLayer3;
 
 
 
+
 //--////this is new/////--//
  //Change the URL's below in order to change the maps that are being shown.
  //map1 is the one on the left side and map2 is the one on the right side.
@@ -249,7 +252,7 @@ var dataLayer3;
          mapF = vis.mapView.map;
           
            sdataLayer = layers[1].getSubLayer(0); 
-           sdataLayer1 = layers[1].getSubLayer(1); 
+           //sdataLayer1 = layers[1].getSubLayer(1); 
           
             //--//// Tell CartoDB it's okay if there are embedded //videos and other files in our infowindow template - //note this goes in the done ()function directly after //the datalayers - as here
             dataLayer.infowindow.set('sanitizeTemplate', 'false');       
