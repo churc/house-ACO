@@ -13,7 +13,7 @@ var dataLayer3;
      dataLayer = layers[1].getSubLayer(0);
     dataLayer1 = layers[1].getSubLayer(1);
 	dataLayer2 = layers[1].getSubLayer(2);
-  	 //dataLayer3 = layers[1].getSubLayer(3);   
+  	 dataLayer3 = layers[1].getSubLayer(3);   
      
           
 //--Tell CartoDB it's okay if there are embedded //videos and other files in our infowindow template//note this goes in the done ()function directly after //the datalayers - as here
