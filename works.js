@@ -49,7 +49,7 @@ var dataLayer3;
   		else if ($(this).val()==='201-329') {
      sql = "SELECT * FROM table_2016_mssp_acos_merge_participants_clean_count_2_merge WHERE count >=201 AND count <=328";
   } 
-          dataLayer2.setSQL(sql);
+          dataLayer3.setSQL(sql);
 //--////need to add -dataLayer1.setSQL(sql);-- if you want function to work on sublayer1
   }); 
 		 
@@ -89,7 +89,7 @@ var dataLayer3;
           
 // Log out the SQL to ensure we have something that will work
           console.log(sql2);
-          dataLayer2.setSQL(sql2);
+          dataLayer3.setSQL(sql2);
         }
 
 //
@@ -127,7 +127,7 @@ var dataLayer3;
           
           // Log out the SQL to ensure we have something that will work
          console.log(sqlagtype);
-         dataLayer2.setSQL(sqlagtype);
+         dataLayer3.setSQL(sqlagtype);
         }
 
         // Initialize the checkboxes: add an event handler to watch for change
