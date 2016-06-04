@@ -1,8 +1,9 @@
-//--Initialize map from CartoDB 
+//--Initialize map from CartoDB this is final from website
+
 var dataLayer;
 var dataLayer1;
 var dataLayer2;
-var dataLayer3;
+//var dataLayer3;
 
       $(document).ready(function() {
         cartodb.createVis('map', 'https://thenewschool.cartodb.com/u/churc186/api/v2/viz/3441dc88-f84f-11e5-b332-0e5db1731f59/viz.json', {
@@ -13,7 +14,7 @@ var dataLayer3;
      dataLayer = layers[1].getSubLayer(0);
     dataLayer1 = layers[1].getSubLayer(1);
 	dataLayer2 = layers[1].getSubLayer(2);
-  	 dataLayer3 = layers[1].getSubLayer(3);   
+  	// dataLayer3 = layers[1].getSubLayer(3);   
      
           
 //--Tell CartoDB it's okay if there are embedded //videos and other files in our infowindow template//note this goes in the done ()function directly after //the datalayers - as here
@@ -49,7 +50,7 @@ var dataLayer3;
   		else if ($(this).val()==='201-329') {
      sql = "SELECT * FROM table_2016_mssp_acos_merge_participants_clean_count_2_merge WHERE count >=201 AND count <=328";
   } 
-          dataLayer3.setSQL(sql);
+          dataLayer2.setSQL(sql);
 //--////need to add -dataLayer1.setSQL(sql);-- if you want function to work on sublayer1
   }); 
 		 
@@ -89,7 +90,7 @@ var dataLayer3;
           
 // Log out the SQL to ensure we have something that will work
           console.log(sql2);
-          dataLayer3.setSQL(sql2);
+          dataLayer2.setSQL(sql2);
         }
 
 //
@@ -127,7 +128,7 @@ var dataLayer3;
           
           // Log out the SQL to ensure we have something that will work
          console.log(sqlagtype);
-         dataLayer3.setSQL(sqlagtype);
+         dataLayer2.setSQL(sqlagtype);
         }
 
         // Initialize the checkboxes: add an event handler to watch for change
